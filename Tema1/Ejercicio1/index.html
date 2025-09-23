@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Nuevas Entradas para formularios </h1>
+  <form>
+    <label for="fecha">Fecha de nacimiento:</label>
+    <input type="date" id="fecha" name="fecha">
+
+    <label for="rango">Nivel de satisfacción:</label>
+    <input type="range" id="rango" name="rango" min="0" max="10">
+
+    <fieldset>
+        <label for="Normal">
+          Normal
+          <input type="checkbox" id="Normal" checked>
+        </label>
+
+      <label id="tintado" for="Tintado">
+        Tintado
+        <input  type="checkbox" id="Tintado" checked>
+      </label>
+    </fieldset>
+
+    <button type="submit">Enviar</button>
+  </form>
+</body>
+</html>
