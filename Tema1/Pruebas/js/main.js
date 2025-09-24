@@ -16,27 +16,116 @@ console.log("Nombre es : "+name2); // console.log para sacar el mensaje por la c
 name2 = 5;
 console.log("Nombre es : "+name2 + " y su tipo es: "+ typeof(name2)); // typeof para saber el tipo de variable
 
-name2 = true;
-console.log("Nombre es : "+name2+ " y su tipo es: "+ typeof(name2));
+/*Las variables se pueden declarar de tres formas
+Si no tiene let ni var es una variable super global
+var es una variable global
+let es una variable local
+*/
 
-name2 = [1,2,3,4,5];    
-console.log("Nombre es : "+name2+ " y su tipo es: "+ typeof(name2));
+var a = 2345;
+let b = "Hello";
+c = true;
 
-name2 = null;
-console.log("Nombre es : "+name2+ " y su tipo es: "+ typeof(name2));
+let Objt = {
+    nombre: "Pepe",
+    edad: 34,
+    activo: true
+}
 
-name2 = 10/0;
-console.log("Nombre es : "+name2+ " y su tipo es: "+ typeof(name2));
+console.dir(Objt);
 
-name2 = -10/0;
-console.log("Nombre es : "+name2+ " y su tipo es: "+ typeof(name2));
 
+//Tipo de datos "los nuevos que no son iguales a java"
+//No existe el tipo float 
+BigInt // numeros muy grandes
+//function es un tipo para js
+
+console.log(typeof(hola))
+
+function hola (){
+    console.log("Hola");
+}
+// Tipos de datos especiales
+undefined // variable declarada pero no inicializada
+null // variable que no tiene ningun valor
+Infinity // representa el infinito matematico
+
+
+//Conversion de tipos de datos
+
+let nombre = "Pepe";
+let apellidos = "Garcia Gutierrez";
+let edad = 34;
+//edad = edad.toString(); 
+// se puede utilixar la funcion to>String() como en java pero en js nos lo podemos ahorrar
+let login = nombre + edad; // lo pondriamos así y funcionaria lo convierte automaticamente
+
+console.log("Login: "+login);
+
+
+let nota = "5.67";
+console.log("Nota: " +parseFloat(nota));
+
+//Literales 
+
+//Los array en js pueden contener diferentes tipos de datos 
+let myArray = [1,true,34.56,"Pepe",{nombre:"Ana",edad:23},undefined];
+console.log(myArray);
+
+//literalos logicos 
+"&&" // AND
+"||" // OR
+"!" // NOT
+
+//Se pueden representar binarios , octales y hexadecimales
+
+//objetos
+let miCoche = {
+    marca: "Toyota",
+    modelo: "Corolla",
+    anyo: 2020,
+    color: "Rojo",
+    motor: {
+        cilindrada: 2000,
+        tipo: "Hibrido"
+    },
+    extras: ["Aire Acondicionado","Navegador","Bluetooth"]
+}
+console.log(miCoche);
+
+let persona = {
+    nombre: "Ana",
+    apellidos: "Garcia",
+    edad: 30,
+    email: "ana@gmail.com"
+}
+
+console.log("Email: "+persona.email);
 hello("Hello Universe!");
+//Switch son iguales a los de java 
+/*var a = "Pepe";
+
+switch(typeof(a)){
+    case "number":
+        a = a +5;
+        break;
+    case "string":
+        a = "Buenos dias " +a; 
+        break;
+    case "boolean": 
+        a = !a;
+        break;
+    default:
+        a = null;
+        break;
+}
+
+console.log("El valor de a es: "+a);*/
 /************ FUNCTIONS ************/
 /**
  * 
  * @param hello{string} s - cadea de saludos para dar la bienvenida
- * @param {number} n - edad del usuario 
+ * @param {aber} n - edad del usuario 
  * @return Valor total
  */
 
@@ -47,3 +136,4 @@ function hello(s){
 function bye(s){
     document.getElementById("h11").innerHTML = s;
 }
+
