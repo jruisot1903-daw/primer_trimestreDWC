@@ -133,61 +133,177 @@ h11.innerHTML += ("<br> Nuevo valor de x es: "+x);*/
 let h11 = document.getElementById("h11");
 let it1 = document.getElementById("it1");
 let b1 = document.getElementById("b1");
+let it2 = document.getElementById("it2");
 
 //h11.innerHTML = this;
 
-b1.onclick = Suma10;
-h11.innerHTML =  "Resuladado: ";
-function Suma10(){
-    h11.innerHTML =  "Resuladado: ";
+//b1.onclick = Suma10;
+//h11.innerHTML =  "Resuladado: ";
+//function Suma10(){
+  //  h11.innerHTML =  "Resuladado: ";
 
-    switch(it1.value){
-        case "":
-            alert("Tiene que poner un valor numerico")
-            break;
-        case "10":
-            h11.innerHTML = "El valor es 10";
-            break;
-        case "20":
-            h11.innerHTML = "El valor es 20";
-            break;
-        case "30":
-            h11.innerHTML = "El valor es 30";
-            break;
-        default:
-            h11.innerHTML += parseFloat(it1.value) +10;
-        }        
-}
+    //switch(it1.value){
+      //  case "":
+        //    alert("Tiene que poner un valor numerico")
+          //  break;
+       // case "10":
+         //   h11.innerHTML = "El valor es 10";
+           // break;
+       // case "20":
+         //   h11.innerHTML = "El valor es 20";
+           // break;
+        //case "30":
+          //  h11.innerHTML = "El valor es 30";
+           // break;
+        //default:
+          //  h11.innerHTML += parseFloat(it1.value) +10;
+       // }        
+//}
 /**********************************/
 /*for(let i=0; i<10; i++){
     h11.innerHTML += "<br> Valor de i: "+(i+1);
 } */
 
-    // 1º Tipo de for 
+// 1º Tipo de for 
+
 let myArray = [1,2,3,4,5,6,7,8,9,10];
 let myObject = {nombre:"Ana",edad:23,email:"anita@gmail"};
+
 /*for(let i=0; i<myArray.length; i++){
     h11.innerHTML +=  myArray[i]+",";
 }*/
 
 // 2º Tipo de for each
 
-for(let i in myObject){ // in nos devuelve el indice del array
+/*for(let i in myObject){ // in nos devuelve el indice del array
     h11.innerHTML +=  myObject[i]+",";
+}*/
+
+// 3º Tipo de for  of
+
+/*for(elem of myArray){ // of nos devuelve el valor del array nos da fallo si lo hacemos con objetos
+    h11.innerHTML +=  elem+",";
+}*/
+
+/**********************************/
+
+//bucle while es igual que en java 
+
+/**********************************/
+/* Ejemplo de Break y continue */
+for(let i = 0; i< myArray.length; i++){
+    if((myArray[i] %2 ) == 0){
+        continue; 
+// si lo encuenta lo sigue ejecutando en el caso de ponerle break se saldria y terminaria
+    }else{
+        h11.innerHTML += myArray[i] + ", ";
+    }
 }
 
-// 3º Tipo de for 
 
-for(let valor of myArray){ // of nos devuelve el valor del array
-    h11.innerHTML +=  valor+",";
+/**********************************/
+//FUNCIONES
+/**********************************/
+
+
+    
+
+b1.onclick = multiplicaBoton;
+//multiplica2(2,3,4,6,2);
+multiplica3(2,3,4,3,5,6);
+
+function multiplicaBoton(){
+
+    h11.innerHTML = "Pruebas con Funciones";
+
+    let result = 0;
+
+    if((it1.value) == ""){
+       result = multiplica(parseFloat(it2.value));
+
+    }else if((it2.value) == ""){
+        result = multiplica(parseFloat(it1.value));
+    }else 
+       result = multiplica(parseFloat(it1.value),parseFloat(it2.value));
+
+    document.getElementById("resultadoMultiplica").value = result;
+}
+
+//Ejemplo de Funcion por si falta algun parametro 
+
+function multiplica(op1,op2){
+    let result = 0;
+    if((!op1) && (!op2)){
+        alert("Debe de introducir al menos un valor!");
+    }else{
+         let op1_den = op1 || 1;
+         let op2_den = op2 || 1;
+        result =  op1_den * op2_den;
+    }
+        return result;
+}
+
+// Varios parametros
+
+function multiplica2() {
+    let result = 1;
+
+    console.log(arguments);
+
+    for(i of arguments)
+        result *= i;
+
+    //Es muy comun hacer esto 
+
+    switch(arguments.length){
+
+    }
+
+    h11.innerHTML = result;
+}
+
+/**********************************/
+
+//Parametro rest  por si en una funcion quiere parametros obligatorios y el resto son opcionales 
+function multiplica3(op1,op2,...restoOperadores){
+    let result = op1 * op2; 
+
+    console.log(restoOperadores);
+
+    for(op of restoOperadores){
+        result *= op;
+    }
+    h11.innerHTML = result;
+}
+
+//Operador Spread es lo contrario que rest
+
+let miArray = [true,5,7,9];
+calculaMedia(...miArray);
+
+function calculaMedia(){
+    let result = 0 ; 
+    if((typeof arguments[0] == "boolean") && (arguments[0])) {
+        for(let i = 1; i< arguments.length; i++)
+            if(typeof arguments[i] == "number")
+                result += arguments[i];
+
+        result /= arguments.length -1;
+
+        h11.innerHTML = "Nota media: " + result
+
+    }else 
+        h11.innerHTML = "Suspenso";
 }
 
 
 
+//function muestraValores(){
+  //  for(i in arguments)
+    //    console.log(arguments[i]);
+//}
 
-
-
-
+// muestraValores(1,2,3,4,5);
 
 /**********************************/
 //Switch son iguales a los de java 
