@@ -130,11 +130,6 @@ x ??= b ;
 
 h11.innerHTML += ("<br> Nuevo valor de x es: "+x);*/
 
-let h11 = document.getElementById("h11");
-let it1 = document.getElementById("it1");
-let b1 = document.getElementById("b1");
-let it2 = document.getElementById("it2");
-
 //h11.innerHTML = this;
 
 //b1.onclick = Suma10;
@@ -190,7 +185,7 @@ let myObject = {nombre:"Ana",edad:23,email:"anita@gmail"};
 //bucle while es igual que en java 
 
 /**********************************/
-/* Ejemplo de Break y continue */
+/* Ejemplo de Break y continue 
 for(let i = 0; i< myArray.length; i++){
     if((myArray[i] %2 ) == 0){
         continue; 
@@ -198,7 +193,7 @@ for(let i = 0; i< myArray.length; i++){
     }else{
         h11.innerHTML += myArray[i] + ", ";
     }
-}
+}*/
 
 
 /**********************************/
@@ -208,9 +203,9 @@ for(let i = 0; i< myArray.length; i++){
 
     
 
-b1.onclick = multiplicaBoton;
+//b1.onclick = multiplicaBoton;
 //multiplica2(2,3,4,6,2);
-multiplica3(2,3,4,3,5,6);
+/*multiplica3(2,3,4,3,5,6);
 
 function multiplicaBoton(){
 
@@ -265,7 +260,7 @@ function multiplica2() {
 /**********************************/
 
 //Parametro rest  por si en una funcion quiere parametros obligatorios y el resto son opcionales 
-function multiplica3(op1,op2,...restoOperadores){
+/*function multiplica3(op1,op2,...restoOperadores){
     let result = op1 * op2; 
 
     console.log(restoOperadores);
@@ -278,8 +273,8 @@ function multiplica3(op1,op2,...restoOperadores){
 
 //Operador Spread es lo contrario que rest
 
-let miArray = [true,5,7,9];
-calculaMedia(...miArray);
+
+/*calculaMedia(...miArray);
 
 function calculaMedia(){
     let result = 0 ; 
@@ -294,7 +289,58 @@ function calculaMedia(){
 
     }else 
         h11.innerHTML = "Suspenso";
+}*/
+
+// Generadores nos sirve para hacer contadores especiales podemos hacer que avancen de manera diferente a ++ o -- 
+/*h11.innerHTML = "Resultado: ";
+let data = counter.next();
+let counter = contador();
+let miArray = [true,5,7,9,false,45,"Pepe",true,"Maria",false,false,88];
+*/
+
+/*while(!data.done){
+    h11.innerHTML += data.value + " - ";
+    data = counter.next();
 }
+
+
+function* contador(){
+    let i = 0;
+    while (i < miArray.length){
+        if(typeof miArray[i] == "boolean"){
+            yield miArray[i]; //yield se utiliza para que literalmente devuelva eso tal cual 
+        }
+        i++
+    }
+}
+*/
+
+//funciones anonimas  se suele utilizar para los eventos para que vaya todo junto y se sepa que hace al hacer el evento
+/* funciones arrow (flechas) 
+    se suele utilizar para ahorrar codigo  se remplaza la palabra fuction por () =>
+*/
+let b2 = document.getElementById("b2");
+let h11 = document.getElementById("h11");
+let it1 = document.getElementById("it1");
+let b1 = document.getElementById("b1");
+let it2 = document.getElementById("it2");
+
+
+b2.onclick = () =>{
+    alert("Empezando..."+ this);
+    console.log("Arguments en => es: "+ arguments);
+}
+
+b1.onclick = function(){
+    document.getElementById("resultadoMultiplica").value =  parseFloat(it1.value) * parseFloat(it2.value) + this;
+    console.log("Arguments en multiplicar  es: "+ arguments);
+};
+
+for (i in myArray){
+    h11.innerHTML += " "+ myArray[i];
+}
+
+
 
 
 

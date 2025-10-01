@@ -17,8 +17,8 @@ header{
 }
 
 button{
-    margin: 1%;
-    padding: 1%;
+    margin: 5px;
+    padding: 5px;
     color: white;
     font-weight: bold;
     background-color: darkgray;
@@ -27,5 +27,6 @@ button{
 
 input{
     height: 4%;
-    margin: 1%;
+    margin: 0.5%;
+    
 }
