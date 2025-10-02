@@ -5,8 +5,8 @@
 }
 main(); */
 
-document.getElementById("h11").style.backgroundColor = "red";
-document.getElementById("h11").style.color = "white";
+//document.getElementById("h11").style.backgroundColor = "red";
+//document.getElementById("h11").style.color = "white";
 /*
 //En JS no es necesatio definir el tipo de variable
 var name2 = "Jhon"; 
@@ -319,7 +319,7 @@ function* contador(){
 /* funciones arrow (flechas) 
     se suele utilizar para ahorrar codigo  se remplaza la palabra fuction por () =>
 */
-let b2 = document.getElementById("b2");
+/*let b2 = document.getElementById("b2");
 let h11 = document.getElementById("h11");
 let it1 = document.getElementById("it1");
 let b1 = document.getElementById("b1");
@@ -338,9 +338,33 @@ b1.onclick = function(){
 
 for (i in myArray){
     h11.innerHTML += " "+ myArray[i];
+}*/
+
+//Ejemplo con try catch
+
+let bRegis = document.getElementById("b1");
+let login = document.getElementById("login");
+let Pass = document.getElementById("pass");
+let RepPass = document.getElementById("repitPass");
+let h11 = document.getElementById("h11");
+
+bRegis.onclick = function(){
+    try {
+        if(login.value == "") throw "Debe introducir un login";
+        else if (Pass.value == "") throw "Debe de introducir la contraseña" ;
+        else if(RepPass.value == "") throw "Debe de repetir la contraseña";
+        else if(Pass.value !== RepPass.value) throw "Las contraseñas no coinciden";
+        else alert("Login correcto!");
+    } catch (er) {
+        let error = document.getElementById("err");
+        error.innerHTML = "Error: " +er;
+    }
+    finally{
+        login.value = "";
+        Pass.value = "";
+        RepPass.value = "";
+    }
 }
-
-
 
 
 

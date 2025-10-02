@@ -30,3 +30,8 @@ input{
     margin: 0.5%;
     
 }
+
+p{
+    color: red;
+    font-weight: bold;
+}
