@@ -135,4 +135,53 @@ function calcular() {
         }
 
 
-        /*********** Ejercicio5 **************/
+/*********** Ejercicio5 **************/
+        const num1 = document.getElementById("num1");
+        const num2 = document.getElementById("num2");
+        const bValoresPares = document.getElementById("ValPares");
+        const salida = document.getElementById("sol");
+
+        if(num1.value >= -100 && num1.value <= 5000 && num2.value >= -100 && num2.value <= 5000){
+            bValoresPares.onclick = function(){
+                let n1 = parseInt(num1.value);
+                let n2 = parseInt(num2.value);
+                let pares = [];
+                for(let i = n1; i <= n2; i++){
+                    if(i % 2 === 0){
+                        pares.push(i);
+                    }
+                }
+                salida.innerHTML = `Números pares entre ${n1} y ${n2}: ${pares.join(", ")}`;
+            }
+        }
+        else{
+            salida.innerHTML = "Los números deben estar entre -100 y 5000.";
+            num1.value = "";
+            num2.value = "";
+        }
+/*********** Ejercicio6 **************/
+const Num1 = document.getElementById("num");
+const Num2 = document.getElementById("numv2");
+const boton = document.getElementById("Result");
+
+boton.onclick = function() {
+    const valor1 = parseFloat(Num1.value);
+    const valor2 = parseFloat(Num2.value);
+
+    if (isNaN(valor1) || isNaN(valor2)) {
+        alert("Por favor, introduce dos números válidos.");
+        return;
+    }
+
+  const suma = valor1 + valor2;
+  const resta = valor1 - valor2;
+  const multiplicacion = valor1 * valor2;
+  const division = valor2 !== 0 ? (valor1 / valor2).toFixed(2) : "No se puede dividir por cero";
+  const resto = valor1 % valor2;
+
+  suma.innerHTML = document.getElementById("suma").innerHTML = `Suma: ${suma}`;
+  resta.innerHTML = document.getElementById("resta").innerHTML = `Resta: ${resta}`;
+  multiplicacion.innerHTML = document.getElementById("multiplicacion").innerHTML = `Multiplicación: ${multiplicacion}`;
+  division.innerHTML = document.getElementById("division").innerHTML = `División: ${division}`;
+  resto.innerHTML = document.getElementById("resto").innerHTML = `Resto: ${resto}`;
+};
