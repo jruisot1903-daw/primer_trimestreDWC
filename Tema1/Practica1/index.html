@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practica1</title>
-    <script src="main.js" defer ></script>
+    <script src="main.js" defer></script>
 </head>
+
 <body>
     <div>
         <h1>Ejercicio1:</h1>
-        
+
         <label for="">Nombre: </label>
         <input type="text" id="nom">
 
@@ -47,24 +49,24 @@
 
         <p id="resultado"></p>
     </div>
-    
+
     <hr>
 
     <div>
         <h1>Ejercicio3:</h1>
 
         <label for="euro">Introduce el valor en €</label>
-       <input type="number" id="euro">
+        <input type="number" id="euro">
 
         <button id="convertir">Convertir</button>
 
-       <label for="dolar">Dolares $: </label>
-       <input type="number" id="dolar" readonly>
+        <label for="dolar">Dolares $: </label>
+        <input type="number" id="dolar" readonly>
 
-       <label for="yen">Yenes ¥:</label>
-       <input type="number" id="yen" readonly>
+        <label for="yen">Yenes ¥:</label>
+        <input type="number" id="yen" readonly>
 
-       <h3 id="error"></h3>
+        <h3 id="error"></h3>
 
     </div>
     <hr>
@@ -72,13 +74,13 @@
     <div>
         <h1>Ejercicio4:</h1>
         <label for="radio">Radio (r):</label>
-        <input type="number" id="radio" min="0"  placeholder="Introduce el radio" />
-        
+        <input type="number" id="radio" min="0" placeholder="Introduce el radio" />
+
         <button onclick="calcular()">Calcular</button>
 
         <label for="area">Área:</label>
         <input type="number" id="area" readonly />
-        
+
         <label for="perimetro">Perímetro:</label>
         <input type="number" id="perimetro" readonly />
     </div>
@@ -99,7 +101,7 @@
     </div>
     <hr>
 
-    <div>   
+    <div>
         <h1>Ejercicio6: </h1>
 
         <label for="num">Numero 1:</label>
@@ -125,5 +127,52 @@
         <label for="resto">Resto: </label>
         <input type="number" id="resto" readonly>
     </div>
+    <hr>
+
+    <div>
+        <h1>Ejercicio7: </h1>
+
+        <label for="not1">Nota 1: </label>
+        <input type="text" id="not1">
+
+        <label for="not2">Nota 2: </label>
+        <input type="text" id="not2">
+
+        <label for="not3">Nota 3: </label>
+        <input type="text" id="not3">
+
+        <button id="CalcularMedia">Calcular Media</button>
+
+        <h3 id="media"></h3>
+
+    </div>
+    <hr>
+
+    <div>
+        <h1>Ejercicio8: </h1>
+        <p>Generar Piramide desde el 1 hasta n </p>
+        <label for="n">Introduce un numero : </label>
+        <input type="number" id="n">
+        <button id="GenerarPiramide">Generar Piramide</button>
+        <p id="piramide"></p>
+    </div>
+    <hr>
+
+    <div>
+        <h1>Ejercicio9: </h1>
+        <label for="n2">Introduce un número :</label>
+        <input type="number" id="n2"  >
+        <button id="piramidegenera">Generar</button>
+
+        <div id="pira"></div>
+    </div>
+    <hr>
+
+    <div>
+        <h1>Ejercicio10: </h1>
+
+    </div>
+    <hr>
 </body>
+
 </html>
