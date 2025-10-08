@@ -1,4 +1,4 @@
-let info = document.getElementById("info");
+/*let info = document.getElementById("info");
 
 let obj1 = {
     nombre: "Juan",
@@ -55,4 +55,19 @@ obj3.color = "brown";
 obj3.nombre = "Alberto";
 obj3.correo = "alberto@gmail.com";
 console.log(obj3);
+*/
+
+
+let info = document.getElementById("info");
+
+info.innerHTML += Math.PI + "<br>";
+info.innerHTML += Math.floor(3.9) + "<br>";
+info.innerHTML += Math.ceil(3.9) + "<br>";
+info.innerHTML += Math.pow(2,10) + "<br>";
+info.innerHTML += numeroAleatorio(1,10)+ "<br>";
+
+function numeroAleatorio(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 
