@@ -60,7 +60,7 @@ console.log(obj3);
 
 let info = document.getElementById("info");
 
-info.innerHTML += Math.PI + "<br>";
+/*info.innerHTML += Math.PI + "<br>";
 info.innerHTML += Math.floor(3.9) + "<br>";
 info.innerHTML += Math.ceil(3.9) + "<br>";
 info.innerHTML += Math.pow(2,10) + "<br>";
@@ -68,6 +68,13 @@ info.innerHTML += numeroAleatorio(1,10)+ "<br>";
 
 function numeroAleatorio(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+}*/
+
+let myString = "loren ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+
+info.innerHTML += myString + "<br>";
+info.innerHTML += myString.charAt(0) + "<br>";
+info.innerHTML += String.fromCharCode("0x0bd0");
+
 
 
