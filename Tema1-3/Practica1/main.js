@@ -227,12 +227,15 @@ const generaPiramide = document.getElementById("GenerarPiramide");
 const salidaPiramide = document.getElementById("piramide");
 
 generaPiramide.onclick = function () {
-  const n = document.getElementById("n").value;
-  for (let i = 0; i <= n; i++) {
+  const n = parseInt(document.getElementById("n").value);
+    salidaPiramide.innerHTML = "";
+  for (let i = 1; i <= n; i++) {
     let espacios = " ".repeat(n - i);
     let numeros = String(i).repeat(2 * i - 1);
     salidaPiramide.innerHTML += espacios + numeros + "<br>";
   }
+
+
 };
 
 /*********** Ejercicio9 **************/
@@ -260,6 +263,7 @@ const parImparBtn = document.getElementById("ParImpar");
 const parYimpar = document.getElementById("parYimpar");
 
 parImparBtn.onclick = function () {
+  parYimpar.innerHTML = "";
   const numero = parseInt(document.getElementById("Numero").value);
 
   if (isNaN(numero)) {
@@ -276,7 +280,7 @@ const pum = document.getElementById("pum");
 const botonPum = document.getElementById("juegoPUM");
 
 botonPum.onclick = function () {
-
+  pum.innerHTML = "";
   for (let i = 1; i <= 100; i++) {
     if (i % 7 === 0 || i % 10 === 7) {
       pum.innerHTML += "PUM<br>";
@@ -285,3 +289,112 @@ botonPum.onclick = function () {
     }
   }
 };
+
+/*********** Ejercicio12 **************/
+
+const contarBtn = document.getElementById("contar");
+const contSalida = document.getElementById("contSalida");
+
+contarBtn.onclick = function(){
+  let resultado = "";
+  let estilo = "";
+
+  for(let i = 1; i <= 300; i++){
+    if(i % 10 === 0){
+      resultado += "<br>";
+    }
+
+    if(i % 4 === 0){
+     estilo = 'style="color: green; font-size: 20px;"';
+    }else if(i % 9 === 0){
+      estilo = 'style="color: red; font-size: 17px;"';
+    }
+    resultado += `<span ${estilo}>${i}</span> `;
+
+  }
+  contSalida.innerHTML = resultado;
+
+}
+
+/*********** Ejercicio13 **************/
+const tirarDadosBtn = document.getElementById("tirarDados");
+const dados = document.getElementById("dados");
+const miArray = [];
+tirarDadosBtn.onclick = function(){
+ 
+ for(let i = 1; i <= 36000; i++){
+  let dado1 = Math.floor(Math.random() * 6) + 1;
+  let dado2 = Math.floor(Math.random() * 6) + 1;
+  miArray.push(dado1 + dado2);
+ }
+
+ let conteo = {};
+ for(let num of miArray){
+   conteo[num] = (conteo[num] || 0) + 1;
+ }
+
+ dados.innerHTML = "";
+ for(let num in conteo){
+   dados.innerHTML += `El número ${num} ha salido ${conteo[num]} veces.<br>`;
+ }
+   
+}
+
+/*********** Ejercicio14 **************/
+const MontNum = document.getElementById("MontonNumeros");
+const guardaBtn = document.getElementById("guarda");
+const mostrarBtn = document.getElementById("mostrar");
+const sl = document.getElementById("sl");
+
+const numAlmacena = [];
+
+guardaBtn.addEventListener('click',() => { // es un evento que esta escuchando y se reproduce cada vez que se hace click
+  const valorInput = parseInt(MontNum.value);
+      if(valorInput === 0){
+            sl.innerHTML += "Saliendo del programa..."
+      }else{
+        const numero = parseInt(valorInput, 10); 
+            numAlmacena.push(numero); 
+            MontNum.value = ''; 
+      }
+});
+
+mostrarBtn.onclick = function(){
+    sl.innerHTML = numAlmacena.sort();
+
+    sl.innerHTML += "<br> El numero más pequeño es: " + numAlmacena[0] + " y el numero mayor es: " + numAlmacena[numAlmacena.length -1];
+     
+    const ocurrencias = {};
+    numAlmacena.forEach(num => {
+        ocurrencias[num] = (ocurrencias[num] || 0) + 1;
+    });
+
+    sl.innerHTML += "<br><br><strong>Ocurrencias de cada número:</strong><br>";
+    for (const num in ocurrencias) {
+        sl.innerHTML += `Número ${num}: ${ocurrencias[num]} veces<br>`;
+    }
+
+}
+
+
+/*********** Ejercicio15 **************/
+const invertBtn = document.getElementById("invertir");
+const arrayDat  = document.getElementById("array");
+const arraySl = document.getElementById("arraySl");
+const addArr = document.getElementById("añade");
+const arrayOrig = [];
+
+addArr.addEventListener('click',() => {
+  
+      arrayOrig.push(arrayDat.value); 
+            arrayDat.value = '';
+});
+
+invertBtn.onclick = function(){
+    arrayOrig.reverse();
+    for(let i in arrayOrig){
+      arraySl.innerHTML += arrayOrig[i]+"  ";
+    }
+}
+
+/*********** Ejercicio16 **************/
