@@ -398,3 +398,146 @@ invertBtn.onclick = function(){
 }
 
 /*********** Ejercicio16 **************/
+
+const UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const LOWER = 'abcdefghijklmnopqrstuvwxyz';
+const DIGITS = '0123456789';
+const SYMBOLS = '!@#$%^&*()-_=+[]{}|;:,.<>?/`~';
+const ALL = UPPER + LOWER + DIGITS + SYMBOLS;
+const CLASSES = [UPPER, LOWER, DIGITS, SYMBOLS];
+
+function parseLength(s) {
+  if (!s) throw new Error('Falta longitud');
+  const m = s.trim().match(/^(\d+)(?:\s*bytes)?$/i);
+  if (!m) throw new Error('Formato inválido. Ej: 128Bytes o 128');
+  return parseInt(m[1], 10);
+}
+
+// rechazo usando 32-bit integers con crypto.getRandomValues
+function secureRandomInt(max) {
+  if (max <= 0) throw new Error('max > 0 required');
+  const UINT32_MAX = 0x100000000;
+  const limit = Math.floor(UINT32_MAX / max) * max;
+  const buf = new Uint32Array(1);
+  while (true) {
+    crypto.getRandomValues(buf);
+    const val = buf[0] >>> 0;
+    if (val < limit) return val % max;
+  }
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = secureRandomInt(i + 1);
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+
+function generatePassword(length) {
+  if (length < 1) throw new Error('La longitud debe ser >= 1');
+  const out = [];
+  if (length >= CLASSES.length) {
+    for (const cls of CLASSES) {
+      out.push(cls[secureRandomInt(cls.length)]);
+    }
+  }
+  while (out.length < length) {
+    out.push(ALL[secureRandomInt(ALL.length)]);
+  }
+  shuffle(out);
+  return out.join('');
+}
+
+document.getElementById('gen').addEventListener('click', () => {
+  try {
+    const val = document.getElementById('len').value;
+    const len = parseLength(val);
+    const pwd = generatePassword(len);
+    document.getElementById('out').textContent = pwd;
+  } catch (e) {
+    document.getElementById('out').textContent = 'Error: ' + e.message;
+  }
+});
+
+/*********** Ejercicio17 **************/
+
+function calcularMenor(a, b) {
+      return a < b ? a : b;
+    }
+
+    document.getElementById('btn').addEventListener('click', () => {
+      const n1 = parseInt(document.getElementById('1').value);
+      const n2 = parseInt(document.getElementById('2').value);
+      const salida = document.getElementById('salida');
+
+      // Validación de entrada
+      if (isNaN(n1) || isNaN(n2)) {
+        salida.textContent = 'Por favor, introduce dos números válidos.';
+        return;
+      }
+
+      const menor = calcularMenor(n1, n2);
+      const mayor = (menor === n1) ? n2 : n1;
+
+      const numerosEntre = [];
+
+      for (let i = menor + 1; i < mayor; i++) {
+        numerosEntre.push(i);
+      }
+
+      const cantidad = numerosEntre.length;
+
+      if (cantidad === 0) {
+        salida.textContent = `No hay números entre ${n1} y ${n2}.`;
+      } else {
+        salida.innerHTML = `
+          <strong>Menor:</strong> ${menor}<br>
+          <strong>Mayor:</strong> ${mayor}<br>
+          <strong>Números entre ellos:</strong> ${numerosEntre.join(', ')}<br>
+          <strong>Total:</strong> ${cantidad}
+        `;
+      }
+    });
+
+/*********** Ejercicio18 **************/
+
+    function esMultiplo(numero, divisor) {
+      return numero % divisor === 0;
+    }
+
+    document.getElementById('btn2').addEventListener('click', () => {
+      const numero = parseInt(document.getElementById('numero').value);
+      const opcion = parseInt(document.getElementById('opcion').value);
+      const salida = document.getElementById('rsult');
+
+      // Validaciones básicas
+      if (isNaN(numero)) {
+        salida.textContent = 'Por favor, introduce un número válido.';
+        return;
+      }
+
+      if (![0, 1, 2, 3].includes(opcion) || isNaN(opcion)) {
+        salida.textContent = 'Opción no válida. Elige 0, 1, 2 o 3.';
+        return;
+      }
+
+      if (opcion === 0) {
+        salida.textContent = 'Has salido del programa...';
+        return;
+      }
+
+      let divisor;
+      switch (opcion) {
+        case 1: divisor = 2; break;
+        case 2: divisor = 3; break;
+        case 3: divisor = 5; break;
+      }
+
+      const resultado = esMultiplo(numero, divisor)
+        ? `${numero} es múltiplo de ${divisor}.`
+        : `${numero} NO es múltiplo de ${divisor}.`;
+
+      salida.textContent = resultado;
+    });
+
+    /*********** Ejercicio18 **************/
