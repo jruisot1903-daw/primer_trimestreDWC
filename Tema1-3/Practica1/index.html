@@ -161,7 +161,7 @@
     <div>
         <h1>Ejercicio9: </h1>
         <label for="n2">Introduce un número :</label>
-        <input type="number" id="n2"  >
+        <input type="number" id="n2">
         <button id="piramidegenera">Generar</button>
 
         <div id="pira"></div>
@@ -234,10 +234,45 @@
 
     <div>
         <h1>Ejercicio16: </h1>
+        <h2>Generador de contraseñas (KEYGEN)</h2>
+        <label>Longitud (ej. 128Bytes o 64): <input id="len" value="64"></label>
+        <button id="gen">Generar</button>
+        <div class="out" id="out">Aquí aparecerá la contraseña</div>
     </div>
     <hr>
 
+    <div>
+        <h1>Ejercicio17: </h1>
+        <h2>Mostrar números entre dos enteros</h2>
 
+        <label>Primer número: <input type="number" id="1"></label><br>
+        <label>Segundo número: <input type="number" id="2"></label><br>
+        <button id="btn">Calcular</button>
 
+        <div id="salida"></div>
+    </div>
+    <hr>
+
+    <div>
+        <h1>Ejercicio18: </h1>
+        <label>Introduce un número: <input type="number" id="numero"></label><br>
+
+        <pre>
+            Menú
+            ----
+            1. Calcular si es múltiplo de 2
+            2. Calcular si es múltiplo de 3
+            3. Calcular si es múltiplo de 5
+            0. Salir
+        </pre>
+
+        <label>Elige una opción: <input type="number" id="opcion" min="0" max="3"></label><br>
+        <button id="btn2">Calcular</button>
+
+        <div id="rsult"></div>
+
+    </div>
+    <hr>
 </body>
+
 </html>
