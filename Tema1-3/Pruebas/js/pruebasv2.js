@@ -70,11 +70,68 @@ function numeroAleatorio(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }*/
 
-let myString = "loren ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+//let myString = "loren ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 
-info.innerHTML += myString + "<br>";
-info.innerHTML += myString.charAt(0) + "<br>";
-info.innerHTML += String.fromCharCode("0x0bd0");
+//info.innerHTML += myString + "<br>";
+//info.innerHTML += myString.charAt(0) + "<br>";
+//info.innerHTML += String.fromCharCode("0x0bd0");
+
+//Metodos
+
+/*let myArray = new Array(1,true,"Pepe",45.678,"María",false);
+let existBoolean = false;
+ existBoolean = myArray.some(function(elem){
+    return typeof elem === "boolean";
+});
+
+if(existBoolean) alert("Existen booleanos en el array");*/
+//myArray.forEach(function(elem,indice, arrayActual){
+//    console.log("myArray es: " + arrayActual);
+
+//    info.innerHTML += "<br> Elemento actual es: "+ elem + ", situado en la posicion: "+indice;
+//});
 
 
+// Metodos Date
+// Date.parse(dateNow); para pasar la fecha a segundos
+
+
+
+//info.innerHTML += "La hora en tu cidudad es: "+ dateNow.toUTCString() +" añadiendo un offset de "+ dateNow.getTimezoneOffset();
+
+//si son mas de las 8 de la tarde que ponga colores oscuros en la web
+
+let mainHTML = document.getElementById("main");
+let navHTML = document.getElementById("nav");
+let asideHTML = document.getElementById("aside");
+let footerHTML = document.getElementById("footer");
+let calcula = document.getElementById("calcula");
+let dateNow = new Date();
+
+
+
+
+if (dateNow.getHours() >= 12 && dateNow.getMonth() >= 2 && dateNow.getMonth() <= 10 ){
+    mainHTML.style.backgroundColor = "rgb(138, 126, 126)";
+    navHTML.style.backgroundColor = "rgb(39, 38, 38)";
+    asideHTML.style.backgroundColor = "rgb(66, 59, 59)";
+    footerHTML.style.backgroundColor = "rgb(39, 38, 38)";
+    
+    mainHTML.style.color = "white";
+    navHTML.style.color = "white";
+    asideHTML.style.color = "white";
+    footerHTML.style.color = "white";
+}
+
+calcula.onclick = function(){
+    let fecha = document.getElementById("fecha");
+    let dateNow = new Date();
+    let cumple =  new Date(fecha.value);
+
+    let resul = dateNow - cumple;
+
+    info.innerHTML = "Llevas vivo "+(resul/1000) + " segundos";
+
+
+}
 

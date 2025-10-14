@@ -41,9 +41,21 @@ main{
     background-color: rgb(255, 2, 2);
 }
 
+
 footer{
     width: 100%;
     height: 10%;
     float: left;
     background-color: rgb(131, 0, 253);
+}
+
+input , a{
+    padding: 1%;
+    margin: 1%;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
 }
