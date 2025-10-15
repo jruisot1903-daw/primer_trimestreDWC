@@ -540,4 +540,101 @@ function calcularMenor(a, b) {
       salida.textContent = resultado;
     });
 
-    /*********** Ejercicio18 **************/
+    /*********** Ejercicio19 **************/
+
+     let totalBruto = 0;
+
+    function calcularSalarioBruto(horas, turno) {
+      switch (turno) {
+        case 'm': return horas * 25;
+        case 't': return horas * 30;
+        case 'n': return horas * 35;
+        default: return 0;
+      }
+    }
+
+    function calcularSalarioNeto(salarioBruto) {
+      let descuento = 0;
+      if (salarioBruto < 600) descuento = 0.08;
+      else if (salarioBruto <= 1000) descuento = 0.10;
+      else descuento = 0.12;
+      return salarioBruto * (1 - descuento);
+    }
+
+    document.getElementById("btnCalcular").addEventListener("click", () => {
+      const nombre = document.getElementById("nombre").value.trim();
+      const apellido = document.getElementById("apellido").value.trim();
+      const horas = parseFloat(document.getElementById("horas").value);
+      const turno = document.querySelector('input[name="turno"]:checked');
+
+      if (!nombre || !apellido || isNaN(horas) || !turno) {
+        alert("Por favor, completa todos los campos correctamente.");
+        return;
+      }
+
+      const salarioBruto = calcularSalarioBruto(horas, turno.value);
+      const salarioNeto = calcularSalarioNeto(salarioBruto);
+      totalBruto += salarioBruto;
+
+      document.getElementById("resultado").innerHTML = `
+        <p><strong>Empleado:</strong> ${nombre} ${apellido}</p>
+        <p><strong>Salario Bruto:</strong> ${salarioBruto.toFixed(2)} €</p>
+        <p><strong>Salario Neto:</strong> ${salarioNeto.toFixed(2)} €</p>
+      `;
+
+      document.getElementById("totalBruto").textContent = totalBruto.toFixed(2) + " €";
+
+      // limpiar campos
+      document.getElementById("nombre").value = "";
+      document.getElementById("apellido").value = "";
+      document.getElementById("horas").value = "";
+      document.querySelectorAll('input[name="turno"]').forEach(r => r.checked = false);
+    });
+
+     /*********** Ejercicio20 **************/
+
+     let numeroSecreto;
+    let intentos;
+
+    function iniciarJuego() {
+      numeroSecreto = Math.floor(Math.random() * 100) + 1; // Número entre 1 y 100
+      intentos = 0;
+      document.getElementById("mensaje").textContent = "";
+      document.getElementById("numeroUsuario").value = "";
+      console.log("(Pssst... el número secreto es " + numeroSecreto + ")"); // para pruebas
+    }
+
+    function comprobarNumero() {
+      const numeroUsuario = parseInt(document.getElementById("numeroUsuario").value);
+      const mensaje = document.getElementById("mensaje");
+
+      if (isNaN(numeroUsuario) || numeroUsuario < 1 || numeroUsuario > 100) {
+        mensaje.textContent = "Por favor, introduce un número entre 1 y 100.";
+        return;
+      }
+
+      intentos++;
+
+      if (numeroUsuario === numeroSecreto) {
+        mensaje.innerHTML = `¡Felicidades! Has acertado el número secreto (${numeroSecreto}) 
+        en <strong>${intentos}</strong> intento${intentos > 1 ? 's' : ''}.`;
+      } else if (numeroUsuario < numeroSecreto) {
+        mensaje.textContent = "Mi número es mayor";
+      } else {
+        mensaje.textContent = "Mi número es menor";
+      }
+
+      document.getElementById("numeroUsuario").value = "";
+      document.getElementById("numeroUsuario").focus();
+    }
+
+    document.getElementById("btnIntentar").addEventListener("click", comprobarNumero);
+    document.getElementById("btnReiniciar").addEventListener("click", iniciarJuego);
+
+    // Permitir presionar Enter para probar
+    document.getElementById("numeroUsuario").addEventListener("keypress", function (e) {
+      if (e.key === "Enter") comprobarNumero();
+    });
+
+    // Iniciar juego al cargar la página
+    iniciarJuego();

@@ -273,6 +273,51 @@
 
     </div>
     <hr>
+
+   <div>
+    <h1>Ejercicio 19: Cálculo de Salarios</h1>
+
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" required>
+
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" required>
+
+    <br><br>
+
+    <label for="horas">Horas trabajadas:</label>
+    <input type="number" id="horas" min="0" required>
+
+    <br><br>
+
+    <span>Turno:</span><br>
+    <input type="radio" name="turno" id="turnoM" value="m">
+    <label for="turnoM">Mañana (25 €/h)</label><br>
+
+    <input type="radio" name="turno" id="turnoT" value="t">
+    <label for="turnoT">Tarde (30 €/h)</label><br>
+
+    <input type="radio" name="turno" id="turnoN" value="n">
+    <label for="turnoN">Noche (35 €/h)</label><br><br>
+
+    <button id="btnCalcular">Calcular salario</button>
+
+    <h2>Resultado:</h2>
+    <div id="resultado"></div>
+
+    <h3>Total salarios brutos abonados:</h3>
+    <div id="totalBruto">0 €</div>
+  </div>
+  <hr>
+
+   <h1>Ejercicio20: </h1>
+  <p>Adivina el número entre 1 y 100</p>
+
+  <input type="number" id="numeroUsuario" min="1" max="100" placeholder="1-100">
+  <button id="btnIntentar">Probar</button>
+  <button id="btnReiniciar">Reiniciar</button>
+
+  <p id="mensaje"></p>
 </body>
 
 </html>
