@@ -110,7 +110,7 @@ let dateNow = new Date();
 
 
 
-
+/*
 if (dateNow.getHours() >= 12 && dateNow.getMonth() >= 2 && dateNow.getMonth() <= 10 ){
     mainHTML.style.backgroundColor = "rgb(138, 126, 126)";
     navHTML.style.backgroundColor = "rgb(39, 38, 38)";
@@ -130,8 +130,15 @@ calcula.onclick = function(){
 
     let resul = dateNow - cumple;
 
-    info.innerHTML = "Llevas vivo "+(resul/1000) + " segundos";
+    info.innerHTML = "Llevas vivo "+((resul/1000)*60*60*24) + " segundos";
+}*/
 
+// Objeto screen 
 
-}
+info.innerHTML += "Resolucion de la pantalla (px): "+screen.availWidth + " - " + screen.availHeight;
+info.innerHTML += "<hr>Resolucion de la pantalla total (px): "+screen.width + " - " + screen.height;
+info.innerHTML += "<hr>Bits para colores (2 elevado a ): "+ screen.colorDepth;
+info.innerHTML += "<hr> Bits por pixel: "+ screen.pixelDepth;
+info.innerHTML += "<hr> Orientación de la pantalla : "+ screen.orientation.angle;
 
+// Objeto Windows
