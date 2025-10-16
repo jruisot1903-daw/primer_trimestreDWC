@@ -142,3 +142,10 @@ info.innerHTML += "<hr> Bits por pixel: "+ screen.pixelDepth;
 info.innerHTML += "<hr> Orientación de la pantalla : "+ screen.orientation.angle;
 
 // Objeto Windows
+
+let cierra = document.getElementById("cierra").onclick = function(){    
+    if(!this.closed)
+            this.close();
+}
+
+
