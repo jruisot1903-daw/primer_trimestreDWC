@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+        background-color: rgb(224, 219, 219);
+}
+
+header{
+    text-align: center;
+    margin: 5px;
+}
+
+div{
+    background-color: rgb(150, 152, 155);
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgb(108, 108, 109);
+    margin: 1%;
+    padding: 1%;
+}
+
+label{
+    font-weight: bold;
+}
+input{
+    padding: 5px;
+    background-color: rgb(224, 219, 219);
+    font-weight: bold;
+}
+
+button{
+    padding: 5px;
+}

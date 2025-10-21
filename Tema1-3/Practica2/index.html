@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica2</title>
+    <script src="./main.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Relacion de Ejercicios 2</h1>
+    </header>
+    <div>
+        <h1>Ejercicio1</h1>
+        <h3 id="salida1"></h3>
+    </div>
+    <hr>
+    <div>
+        <h1>Ejercicio2</h1>
+        <label for="longitud">Longitud:</label>
+        <input type="number" id="longitud" />
+
+        <label for="altura">Altura:</label>
+        <input type="number" id="altura" />
+
+        <label for="longitudResultado">Longitud de la pendiente:</label>
+        <input type="text" id="longitudResultado" readonly />
+
+        <label for="anguloResultado">Ángulo de inclinación (grados):</label>
+        <input type="text" id="anguloResultado" readonly />
+
+        <label for="porcentajeResultado">Porcentaje de pendiente:</label>
+        <input type="text" id="porcentajeResultado" readonly />
+
+        <button onclick="calcular()">Calcular</button>
+    </div>
+    <hr>
+    <div>
+        <h1>Ejercico3</h1>
+        <p id="salida3"></p>
+    </div>
+    <hr>
+    <div>
+        <h1>Ejercicio4</h1>
+        <label for="fecha">Introduce tu fecha de nacimiento para saber cuando días llevas vivo</label>
+        <input type="date" id="fecha">
+        <button id="calcula">Calcular </button>
+        <p id="salida4"></p>
+    </div>
+    <hr>
+    <div>
+        <h1>Ejercicio5</h1>
+        <label for="fecha2">Introduce tu fecha de nacimiento para saber cuantos años tienes </label>
+        <input type="date" id="fecha2">
+        <button id="calcula2">Calcular </button>
+        <p id="salida5"></p>
+    </div>
+    <hr>
+    <div>
+        <h1>Ejercicio6</h1>
+
+        <label for="tituloEvento">Título:</label>
+        <input type="text" id="tituloEvento" name="tituloEvento"><br><br>
+
+        <label for="fechaHoraEvento">Fecha y Hora:</label>
+        <input type="datetime-local" id="fechaHoraEvento" name="fechaHoraEvento"><br><br>
+
+        <button onclick="agregarEvento()">Agregar Evento</button>
+
+        <h2>Lista de Eventos</h2>
+        <div id="listaEventos"></div>
+
+    </div>
+    <hr>
+    <div>
+        <h1>Ejercicio7</h1>
+
+
+
+        <label for="cadenaInput">Introduce una cadena de texto:</label>
+        <input type="text" id="cadenaInput">
+        <button onclick="analizarCadena()">Analizar</button>
+
+        <div id="resultado"></div>
+    </div>
+    <hr>
+    <div>
+        <h1>Ejercicio8</h1>
+
+        <button onclick="insertarFinal()">Insertar al final</button>
+        <button onclick="insertarPrincipio()">Insertar al principio</button>
+        <button onclick="borrarPrimero()">Borrar primer elemento</button>
+        <button onclick="borrarUltimo()">Borrar último elemento</button>
+        <button onclick="insertarEnPosicion()">Insertar en posición</button>
+        <button onclick="eliminarEnPosicion()">Eliminar en posición</button>
+        <button onclick="ordenarAsc()">Ordenar ascendentemente</button>
+        <button onclick="ordenarDesc()">Ordenar descendentemente</button>
+
+        <div id="arrayDisplay">Array: []</div>
+    </div>
+    <hr>
+</body>
+
+</html>
