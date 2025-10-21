@@ -134,18 +134,109 @@ calcula.onclick = function(){
 }*/
 
 // Objeto screen 
-
+/*
 info.innerHTML += "Resolucion de la pantalla (px): "+screen.availWidth + " - " + screen.availHeight;
 info.innerHTML += "<hr>Resolucion de la pantalla total (px): "+screen.width + " - " + screen.height;
 info.innerHTML += "<hr>Bits para colores (2 elevado a ): "+ screen.colorDepth;
 info.innerHTML += "<hr> Bits por pixel: "+ screen.pixelDepth;
 info.innerHTML += "<hr> Orientación de la pantalla : "+ screen.orientation.angle;
-
+*/
 // Objeto Windows
+/*
+let cierra = document.getElementById("cierra").onclick = (e) => {    
+    e.preventDefault();
+};
+    
+    document.body.addEventListener("resize",() =>{
 
-let cierra = document.getElementById("cierra").onclick = function(){    
-    if(!this.closed)
-            this.close();
+              info.innerHTML = window.innerWidth + " - " + window.innerHeight ;
+    });
+*/
+//Codigo asincrono
+// setInterval y setTimeout
+/*
+let backgroundColorMain = "rgb(112, 93, 218)";
+let backgroundColorMain2 = "rgb(232,52,7)";
+
+
+
+
+
+setInterval(function(){
+    if(mainHTML.style.backgroundColor == backgroundColorMain)
+        mainHTML.style.backgroundColor = backgroundColorMain2;
+    else
+        mainHTML.style.backgroundColor = backgroundColorMain;
+}, 2000);
+*/
+
+//ejercicio 6 practica
+/*
+let hora = document.getElementById("hora");
+let texto = document.getElementById("texto");
+
+document.getElementById("brecordar").onclick = () =>{
+    let mensaje = texto.value;
+    let tiempo = new Date(hora.value);
+
+    let fechaNow = new Date();
+
+     tiempo = Math.abs( tiempo - fechaNow );
+
+     setTimeout(function(){
+        alert(mensaje);
+     }, tiempo)
+
+}*/
+
+
+// Abrir y hacer cosas con ventanas
+let wAux = undefined;
+
+//abrimos la ventana 
+document.getElementById("abrirVent").onclick = () =>{
+     wAux = window.open("http://127.0.0.1:5500/primer_trimestreDWC/Tema1-3/Pruebas/usuarios.html","_blank","width=200 height=200")
+
+}
+// la movemos 
+document.getElementById("bMoverTo").onclick = () => {
+    if ((wAux) && (!wAux.closed)){
+        wAux.moveTo(300,500);
+        wAux.focus(); // le ponemos el foco para que cuando la movamos no nos pase a 2 plano 
+    }
+        // moveTO mueve la ventana a donde le hayamos dicho 
+
+}
+
+
+
+document.getElementById("bMoverBY").onclick = () => {
+    if ((wAux) && (!wAux.closed)){
+        wAux.moveBy(300,500);
+        wAux.focus(); // le ponemos el foco para que cuando la movamos no nos pase a 2 plano 
+    }
+        // moveBy mueve la ventana sumandole los pixeles que ya tenia hasta que llegue al limite de la pantalla 
+
+}
+
+
+
+document.getElementById("bResizeTo").onclick = () => {
+    if ((wAux) && (!wAux.closed)){
+        wAux.resizeTo(400,400);
+        wAux.focus(); // le ponemos el foco para que cuando la movamos no nos pase a 2 plano 
+    }
+       //Esta la redeimensiona y ya esta 
+
+}
+
+document.getElementById("bResizeBy").onclick = () => {
+    if ((wAux) && (!wAux.closed)){
+        wAux.resizeBy(400,400);
+        wAux.focus(); // le ponemos el foco para que cuando la movamos no nos pase a 2 plano 
+    }
+        
+    // esta la redimensiona y le va sumando a lo que ya tenia
 }
 
 
