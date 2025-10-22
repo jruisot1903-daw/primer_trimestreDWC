@@ -56,23 +56,17 @@ function rebota() {
   let widthPelota = pelotaCSS.getPropertyValue("width");
   widthPelota = quitarPX(widthPelota);
 
-  let intervalo = setInterval(function () {
+   setInterval(function () {
     if (direction == 1){
         if(left < (wWidth - widthPelota)){
             LeftPlus();
         }else 
             direction = -1;
-      
-  
-    }else{
-            
-
-        let intervaloVuelta = setInterval(function(){
-                if (left >= (wWidth - widthPelota)) {
-                    LeftMenos();
+    } else{
+        if(left > 0){
+            LeftMenos();
         }
-    },speed);
     }
-  }, speed);
 
+});
 }
