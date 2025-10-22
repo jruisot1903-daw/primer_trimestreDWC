@@ -230,13 +230,24 @@ document.getElementById("bResizeTo").onclick = () => {
 
 }
 
-document.getElementById("bResizeBy").onclick = () => {
+document.getElementById("bResizeBY").onclick = function() {
     if ((wAux) && (!wAux.closed)){
         wAux.resizeBy(400,400);
         wAux.focus(); // le ponemos el foco para que cuando la movamos no nos pase a 2 plano 
     }
         
     // esta la redimensiona y le va sumando a lo que ya tenia
+}
+
+document.getElementById("enviarLogin").onclick = function(){
+    if(!wAux.closed){
+        
+        wAux.document.getElementById("loginText").value = document.getElementById("login").value;
+
+        wAux.focus();
+    }else{
+        info.innerHTML = "No se ha abierto la ventana Externa";
+    }
 }
 
 
