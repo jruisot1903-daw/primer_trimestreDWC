@@ -311,54 +311,50 @@ document.getElementById("abrirVent").onclick = () => {
   const ancho = window.innerWidth;
   const alto = window.innerHeight;
   let wAuxAncho = ancho - 40;
-    let wAuxAlto = alto - 20;
+  let wAuxAlto = alto - 20;
 
   wAux = window.open(
     "http://127.0.0.1:5500/primer_trimestreDWC/Tema1-3/Pruebas/usuarios.html",
     "_blank",
     `width=${wAuxAncho},height=${wAuxAlto}`
-
   );
 };
 
-//Ejercicio11 
+//Ejercicio11
 let salida11 = document.getElementById("salida11");
 
-document.getElementById("redimension").onclick = () =>{
- if((wAux) && (!wAux.closed)){
-    wAux.resizeTo(600,500);
+document.getElementById("redimension").onclick = () => {
+  if (wAux && !wAux.closed) {
+    wAux.resizeTo(600, 500);
     wAux.focus();
     salida11.innerHTML = "";
- } else {
-  salida11.innerHTML = "la ventana no esta abierta";
-  salida11.style.color = "red";
- }
-    
-}
+  } else {
+    salida11.innerHTML = "la ventana no esta abierta";
+    salida11.style.color = "red";
+  }
+};
 
 //Ejercicio12
 let iFrame = document.getElementById("iFrame");
 let iFrameSCR = iFrame.src;
 
-
-document.getElementById("volver").onclick = () =>{
+document.getElementById("volver").onclick = () => {
   iFrame.src = iFrameSCR;
+};
 
-}
-
-document.getElementById("siguiente").onclick = () =>{
-    iFrame.src = "../Objetos en JavaScript.pdf";
-}
+document.getElementById("siguiente").onclick = () => {
+  iFrame.src = "../Objetos en JavaScript.pdf";
+};
 
 //Ejercicio13
-
-document.getElementById("enviarLogin").onclick = function(){
-    if(!wAux.closed){
-        
-        wAux.document.getElementById("loginText").value = document.getElementById("login").value;
-
-        wAux.focus();
-    }else{
-        info.innerHTML = "No se ha abierto la ventana Externa";
-    }
-}
+let salida13 = document.getElementById("salida13");
+document.getElementById("enviarLogin").onclick = function () {
+  if ((wAux)&&(!wAux.closed)) {
+    wAux.document.getElementById("loginText").value = document.getElementById("login").value;
+    wAux.focus();
+    salida13.innerHTML = "";
+  } else {
+    salida13.innerHTML = "la ventana no esta abierta";
+    salida13.style.color = "red";
+  }
+};
