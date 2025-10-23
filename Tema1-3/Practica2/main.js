@@ -63,9 +63,7 @@ class Profesor extends Persona {
 const profesor1 = new Profesor("José luis", 40, "Masculino", "DWEC", "Experto");
 profesor1.asignar();
 
-
 // Ejercicio2
-
 
 function calcular() {
   const longitud = parseFloat(document.getElementById("longitud").value);
@@ -76,11 +74,12 @@ function calcular() {
   const anguloPendiente = calcularAnguloPendiente(0, 0, longitud, altura);
   const porcentajePendiente = calcularPendientePorcentaje(altura, longitud);
 
-  document.getElementById("longitudResultado").value = longitudPendiente.toFixed(2);
+  document.getElementById("longitudResultado").value =
+    longitudPendiente.toFixed(2);
   document.getElementById("anguloResultado").value = anguloPendiente.toFixed(2);
-  document.getElementById("porcentajeResultado").value = porcentajePendiente.toFixed(2);
+  document.getElementById("porcentajeResultado").value =
+    porcentajePendiente.toFixed(2);
 }
-
 
 // Función para calcular la longitud de la pendiente
 function calcularLongitudPendiente(longitud, altura) {
@@ -108,7 +107,7 @@ salida3.innerHTML = pi.toFixed(4);
 
 salida3.innerHTML += "<br>" + pi.toPrecision(5);
 
-// Ejercicio 4 
+// Ejercicio 4
 let calcula = document.getElementById("calcula");
 
 calcula.onclick = function () {
@@ -121,9 +120,8 @@ calcula.onclick = function () {
 
   let dias = Math.floor(diferenciaEnMilisegundos / (1000 * 60 * 60 * 24));
 
-
   salida4.innerHTML = "Han pasado " + dias + " días.";
-}
+};
 
 //Ejercicio 5
 let calcula2 = document.getElementById("calcula2");
@@ -134,8 +132,8 @@ calcula2.onclick = function () {
 
   const hoy = new Date();
   const nacimiento = new Date(fecha2.value);
-  salida5.innerHTML = (hoy.getFullYear() - nacimiento.getFullYear()) + " años";
-}
+  salida5.innerHTML = hoy.getFullYear() - nacimiento.getFullYear() + " años";
+};
 
 //Ejercicio 6
 
@@ -181,7 +179,9 @@ function mostrarEventos() {
   ordenarEventos();
   let listaHTML = "<ul>";
   for (const evento of eventos) {
-    listaHTML += `<li>${evento.titulo} - ${evento.fechaHora.toLocaleString()}</li>`;
+    listaHTML += `<li>${
+      evento.titulo
+    } - ${evento.fechaHora.toLocaleString()}</li>`;
   }
   listaHTML += "</ul>";
   document.getElementById("listaEventos").innerHTML = listaHTML;
@@ -191,7 +191,6 @@ function mostrarEventos() {
 function analizarCadena() {
   const cadenaInput = document.getElementById("cadenaInput").value;
   const resultadoDiv = document.getElementById("resultado");
-
 
   const longitud = cadenaInput.length;
   let resultadoHTML = `La cadena "${cadenaInput}" tiene ${longitud} caracteres.<br><br>Posiciones de los caracteres:<br>`;
@@ -208,7 +207,8 @@ function analizarCadena() {
 let miArray = [];
 
 function actualizarDisplay() {
-  document.getElementById('arrayDisplay').innerText = "Array: [" + miArray.join(", ") + "]";
+  document.getElementById("arrayDisplay").innerText =
+    "Array: [" + miArray.join(", ") + "]";
 }
 
 function insertarFinal() {
@@ -247,7 +247,9 @@ function borrarUltimo() {
 
 function insertarEnPosicion() {
   let valor = prompt("Ingrese el valor a insertar:");
-  let posicion = prompt("Ingrese la posición donde insertar (0-" + miArray.length + "):");
+  let posicion = prompt(
+    "Ingrese la posición donde insertar (0-" + miArray.length + "):"
+  );
   posicion = parseInt(posicion);
   if (!isNaN(posicion) && posicion >= 0 && posicion <= miArray.length) {
     miArray.splice(posicion, 0, valor);
@@ -258,7 +260,9 @@ function insertarEnPosicion() {
 }
 
 function eliminarEnPosicion() {
-  let posicion = prompt("Ingrese la posición a eliminar (0-" + (miArray.length - 1) + "):");
+  let posicion = prompt(
+    "Ingrese la posición a eliminar (0-" + (miArray.length - 1) + "):"
+  );
   posicion = parseInt(posicion);
   if (!isNaN(posicion) && posicion >= 0 && posicion < miArray.length) {
     miArray.splice(posicion, 1);
@@ -276,4 +280,85 @@ function ordenarAsc() {
 function ordenarDesc() {
   miArray.sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
   actualizarDisplay();
+}
+
+// Ejercicio9
+
+const salida9 = document.getElementById("salida9");
+
+window.addEventListener("resize", function () {
+  const ancho = window.innerWidth;
+  const alto = window.innerHeight;
+  let tipoPantalla = "";
+
+  if (ancho < 768) {
+    tipoPantalla = "móvil";
+  } else if (ancho >= 768 && ancho <= 1024) {
+    tipoPantalla = "tablet";
+  } else {
+    tipoPantalla = "desktop";
+  }
+
+  salida9.innerHTML = `
+        El ancho y alto de la pantalla es: ${ancho} x ${alto}<br>
+        La pantalla es considerada un <strong>${tipoPantalla}</strong>
+      `;
+});
+
+//Ejercicio10
+let wAux = undefined;
+document.getElementById("abrirVent").onclick = () => {
+  const ancho = window.innerWidth;
+  const alto = window.innerHeight;
+  let wAuxAncho = ancho - 40;
+    let wAuxAlto = alto - 20;
+
+  wAux = window.open(
+    "http://127.0.0.1:5500/primer_trimestreDWC/Tema1-3/Pruebas/usuarios.html",
+    "_blank",
+    `width=${wAuxAncho},height=${wAuxAlto}`
+
+  );
+};
+
+//Ejercicio11 
+let salida11 = document.getElementById("salida11");
+
+document.getElementById("redimension").onclick = () =>{
+ if((wAux) && (!wAux.closed)){
+    wAux.resizeTo(600,500);
+    wAux.focus();
+    salida11.innerHTML = "";
+ } else {
+  salida11.innerHTML = "la ventana no esta abierta";
+  salida11.style.color = "red";
+ }
+    
+}
+
+//Ejercicio12
+let iFrame = document.getElementById("iFrame");
+let iFrameSCR = iFrame.src;
+
+
+document.getElementById("volver").onclick = () =>{
+  iFrame.src = iFrameSCR;
+
+}
+
+document.getElementById("siguiente").onclick = () =>{
+    iFrame.src = "../Objetos en JavaScript.pdf";
+}
+
+//Ejercicio13
+
+document.getElementById("enviarLogin").onclick = function(){
+    if(!wAux.closed){
+        
+        wAux.document.getElementById("loginText").value = document.getElementById("login").value;
+
+        wAux.focus();
+    }else{
+        info.innerHTML = "No se ha abierto la ventana Externa";
+    }
 }

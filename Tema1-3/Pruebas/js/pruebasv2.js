@@ -251,3 +251,6 @@ document.getElementById("enviarLogin").onclick = function(){
 }
 
 
+//Creaccion de una cookie
+
+document.cookie = "name=Pepe";
