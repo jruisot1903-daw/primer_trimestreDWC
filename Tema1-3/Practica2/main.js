@@ -358,3 +358,9 @@ document.getElementById("enviarLogin").onclick = function () {
     salida13.style.color = "red";
   }
 };
+
+//Ejercicio14
+
+let expresion = document.getElementById("expre");
+
+

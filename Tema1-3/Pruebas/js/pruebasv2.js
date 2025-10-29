@@ -254,3 +254,43 @@ document.getElementById("enviarLogin").onclick = function(){
 //Creaccion de una cookie
 
 document.cookie = "name=Pepe";
+
+
+// Pruebas con objeto history
+
+console.log(history);
+
+info.innerHTML = "Número de webs visitadas: "+ history.length;
+
+document.getElementById("atras").onclick = () => {
+    history.back();
+}
+
+document.getElementById("alante").onclick = () =>{
+    history.forward();
+}
+
+//Objeto Location
+
+document.getElementById("Usuarios").onclick = () => {
+    location.href = "/primer_trimestreDWC/Tema1-3/Pruebas/usuarios.html";
+}
+
+// Para recargar la pagina
+//setInterval(function () {
+  //  location.reload();
+//}, 5000);
+
+//Expresiones regulares 
+
+let text = document.getElementById("text");
+
+let er1 = new RegExp("viernes","ig");
+let er2 = /Mancha/ig;
+
+
+er1.test(text.innerText);
+
+
+
+
