@@ -360,7 +360,25 @@ document.getElementById("enviarLogin").onclick = function () {
 };
 
 //Ejercicio14
+document.getElementById("PruebaExpresion").onclick = () => {
+let expresion = document.getElementById("expre").value;
+let text = document.getElementById("texto").value;
 
-let expresion = document.getElementById("expre");
+}
 
+
+//Ejercicio15
+//Ejercicio16
+//Ejercicio17
+document.getElementById("GiraNombre").onclick = () =>{
+let name = document.getElementById("nombre").value;
+let salida17 = document.getElementById("salida17");
+
+nombres = name.split(" ");
+
+salida17.innerHTML = nombres[1]+", "+nombres[0];
+
+}
+
+//Ejercicio18
 
