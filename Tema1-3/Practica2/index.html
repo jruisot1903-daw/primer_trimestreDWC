@@ -123,8 +123,8 @@
     <div>
         <h1>Ejercicio12</h1>
         <iframe id="iFrame" src="../Introducción a JavaScript.pdf" frameborder="0" width="850" height="500"></iframe>
-            <button id="volver">Volver</button>
-            <button id="siguiente">Siguiente</button>
+        <button id="volver">Volver</button>
+        <button id="siguiente">Siguiente</button>
     </div>
     <hr>
     <div>
@@ -133,42 +133,79 @@
 
         <input type="text" id="login">
         <a href="#" id="enviarLogin">Enviar login</a>
-<br>
+        <br>
         <textarea name="" id="texto" rows="10" cols="40"></textarea>
         <p id="salida13"></p>
     </div>
     <hr>
     <div>
         <h1>Ejercicio14</h1>
-        
-        <label for="expre">Introduce Expresiones regulares:</label>
-        <input type="text" id="expre">
 
-        <h3>Introduce un texto para probar la expresion regular</h3>
-        <textarea name="text" id="text" cols="20" rows="5"></textarea>
-        <button id="PruebaExpresion">Probar expresion</button>
+        <textarea id="inputText" rows="6" cols="60" placeholder="Introduce el texto aquí..."></textarea><br><br>
+
+        <label for="regexPattern">Patrón Regex:</label>
+        <input type="text" id="regexPattern" placeholder="Ej: \\b\\w{4}\\b"><br><br>
+
+        <label for="replacementText">Texto de reemplazo:</label>
+        <input type="text" id="replacementText" placeholder="Nuevo texto"><br><br>
+
+        <button onclick="buscarYResaltar()">Buscar y Resaltar</button>
+        <button onclick="reemplazarTexto()">Reemplazar</button>
+
+        <h3>Texto con coincidencias resaltadas:</h3>
+        <div id="highlightedText"></div>
+
+        <h3>Número de coincidencias:</h3>
+        <div id="matchCount"></div>
+
+        <h3>Texto después del reemplazo:</h3>
+        <div id="replacedText"></div>
     </div>
     <hr>
     <div>
         <h1>Ejercicio15</h1>
+        <label for="texto">Introduce un texto:</label><br>
+        <input type="text" id="texto" size="50" value="Nací el 05/04/1982 en Donostia."><br><br>
+
+        <button id="validarFecha">Validar Fecha</button>
+
+        <h3>Resultado:</h3>
+        <div id="salida15"></div>
     </div>
     <hr>
     <div>
         <h1>Ejercicio16</h1>
-    </div>
-    <hr>
-    <div>
-        <h1>Ejercicio17</h1>
-        <label for="nombre">Introduce un nombre (Separado por espacios): </label>
-        <input type="text" id="nombre">
-        <button id="GiraNombre">GiraNombre</button>
-        <p id="salida17"></p>
-    </div>
-    <hr>
-    <div>
-        <h1>Ejercicio18</h1>
-    </div>
-    <hr>
+
+
+        <label for="email">Introduce un email:</label><br>
+        <input type="text" id="email" size="40" value="usuario.ejemplo-123@dominio.com"><br><br>
+
+        <button id="validarEmail">Validar Email</button>
+
+        <h3>Resultado:</h3>
+        <div id="salida16">
+        </div>
+        <hr>
+        <div>
+            <h1>Ejercicio17</h1>
+            <label for="nombre">Introduce un nombre (Separado por espacios): </label>
+            <input type="text" id="nombre">
+            <button id="GiraNombre">GiraNombre</button>
+            <p id="salida17"></p>
+        </div>
+        <hr>
+        <div>
+            <h1>Ejercicio18</h1>
+            <textarea id="htmlInput" rows="10" cols="60">
+                <div>Contenido seguro</div>
+                <script>alert('Esto es peligroso');</script>
+                <p>Más contenido</p>
+            </textarea><br>
+            <button id="limpiar">Eliminar etiquetas peligrosas</button>
+            <h3>Resultado limpio:</h3>
+            <div id="salida18"></div>
+        </div>
+        <hr>
 </body>
 
 </html>

@@ -360,15 +360,70 @@ document.getElementById("enviarLogin").onclick = function () {
 };
 
 //Ejercicio14
-document.getElementById("PruebaExpresion").onclick = () => {
-let expresion = document.getElementById("expre").value;
-let text = document.getElementById("texto").value;
+function buscarYResaltar() {
+  const texto = document.getElementById("inputText").value;
+  const patron = document.getElementById("regexPattern").value;
 
+  try {
+    const regex = new RegExp(patron, "gi");
+    const coincidencias = [...texto.matchAll(regex)];
+
+    const resaltado = texto.replace(regex, match => `<span class="highlight">${match}</span>`);
+
+    document.getElementById("highlightedText").innerHTML = resaltado;
+    document.getElementById("matchCount").textContent = coincidencias.length;
+    document.getElementById("replacedText").textContent = ""; // Limpiar resultado anterior
+  } catch (error) {
+    alert("Error en la expresión regular: " + error.message);
+  }
 }
 
+function reemplazarTexto() {
+  const texto = document.getElementById("inputText").value;
+  const patron = document.getElementById("regexPattern").value;
+  const reemplazo = document.getElementById("replacementText").value;
+
+  try {
+    const regex = new RegExp(patron, "gi");
+    const textoReemplazado = texto.replace(regex, reemplazo);
+
+    document.getElementById("replacedText").textContent = textoReemplazado;
+  } catch (error) {
+    alert("Error en la expresión regular: " + error.message);
+  }
+}
 
 //Ejercicio15
+
+  document.getElementById("validarFecha").onclick = () => {
+    const texto = document.getElementById("texto").value;
+    const regex = /\b\d{2}\/\d{2}\/\d{4}\b/;
+    const resultado = document.getElementById("salida15");
+
+    const coincidencia = texto.match(regex);
+
+    if (coincidencia) {
+      resultado.textContent = "Fecha encontrada: " + coincidencia[0];
+    } else {
+      resultado.textContent = "No se encontró una fecha válida en el texto.";
+    }
+  };
+
 //Ejercicio16
+//const regex = /^[a-zA-Z0-9.-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+ document.getElementById("validarEmail").onclick = () => {
+    const email = document.getElementById("email").value;
+    const resultado = document.getElementById("salida16");
+
+    const regex = /^[a-zA-Z0-9.-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+
+    if (regex.test(email)) {
+      resultado.textContent = "Email válido: " + email;
+    } else {
+      resultado.textContent = "Email inválido. Verifica el formato.";
+    }
+  };
+
 //Ejercicio17
 document.getElementById("GiraNombre").onclick = () =>{
 let name = document.getElementById("nombre").value;
@@ -381,4 +436,13 @@ salida17.innerHTML = nombres[1]+", "+nombres[0];
 }
 
 //Ejercicio18
+
+ document.getElementById("limpiar").onclick = () => {
+    const html = document.getElementById("htmlInput").value;
+    const resultado = document.getElementById("salida18");
+
+    const limpio = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
+
+    resultado.textContent = limpio;
+  };
 
