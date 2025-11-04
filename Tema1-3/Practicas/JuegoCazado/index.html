@@ -1,25 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego Cazado</title>
-   <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juego del Cazado</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="main.js" defer></script>
 </head>
 <body>
-    <main id="main">
-        <h1 id="h1">Juego del ahorcado</h1>
-        <div id="div-principal">
-            <input type="password" id="palabra" placeholder="Introduce la palabra"> 
-            <button id="bpass"> <img  id="candadoimg" src="./img/candadoAbierto.png" alt=""></button>
-            <button id="bjugar">Comenzar juego</button>
+  <div id="div-imagen">
+    <div id="imagen-capa"></div>
+  </div>
 
-            <input type="text" id="letra" placeholder="Introduce letra">
-            <button id="bAdivinar">Adivina</button>
-        </div>
+  <main id="main">
+    <h1 id="h1">Juego del ahorcado</h1>
 
-        <div id="div-imagen"></div>
-    </main>
+    <div id="div-principal">
+      <input type="password" id="palabra" placeholder="Introduce la palabra" />
+      <button id="bpass">
+        <img id="candadoimg" src="./img/candadoAbierto.png" alt="Candado" />
+      </button>
+      <button id="bjugar">Comenzar juego</button>
+
+      <input type="text" id="letra" placeholder="Introduce letra" maxlength="1" />
+      <button id="bAdivinar">Adivina</button>
+    </div>
+
+    <div id="info-juego">
+      <p id="palabraMostrada">Palabra: _ _ _</p>
+      <p id="timer">Tiempo restante: 0s</p>
+      <p id="intentos">Intentos restantes: 6 / 6</p>
+      <p id="fallos">Letras fallidas: </p>
+    </div>
+  </main>
 </body>
 </html>
