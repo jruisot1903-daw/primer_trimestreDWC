@@ -1,8 +1,73 @@
 *{
-
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body {
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-#bpass #candadoimg{
+#h1{
+    color: #d40000;
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px #9e0000;
+}
+
+#main {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    width: 450px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+#div-principal {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="password"],
+input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #d40000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #9e0000;
+}
+
+#candadoimg {
     width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+#div-imagen {
+    margin-top: 20px;
+    height: 200px;
+    background-image: url('./img/ahorcado_0.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }

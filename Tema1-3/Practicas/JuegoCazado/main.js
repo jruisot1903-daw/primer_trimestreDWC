@@ -1,3 +1,6 @@
+
+//Para cambiar el type del input para hacer que si le damos a la imagen del candado veamos la palabra o no
+
 document.getElementById('bpass').addEventListener('click', function () {
     const pass = document.getElementById('palabra'); 
     const candImg = document.getElementById("candadoimg");
@@ -10,3 +13,5 @@ document.getElementById('bpass').addEventListener('click', function () {
         candImg.src = './img/candadoAbierto.png';
     }
 });
+
+
