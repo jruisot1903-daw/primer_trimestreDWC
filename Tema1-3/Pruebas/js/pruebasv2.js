@@ -65,10 +65,10 @@ info.innerHTML += Math.floor(3.9) + "<br>";
 info.innerHTML += Math.ceil(3.9) + "<br>";
 info.innerHTML += Math.pow(2,10) + "<br>";
 info.innerHTML += numeroAleatorio(1,10)+ "<br>";
-
+*/
 function numeroAleatorio(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
-}*/
+}
 
 //let myString = "loren ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 
@@ -291,6 +291,54 @@ let er2 = /Mancha/ig;
 
 er1.test(text.innerText);
 
+
+
+/*
+ Solo números enteros
+/^\d+$/
+
+ Solo letras (mayúsculas o minúsculas)
+/^[a-zA-Z]+$/
+
+ Palabras con letras, números o guiones bajos
+/^\w+$/
+
+ Cadena vacía o solo espacios
+/^\s*$/
+
+ Validar email básico
+/^[\w.-]+@[\w.-]+\.\w{2,}$/
+
+ Detectar URLs (http o https)
+/https?:\/\/[^\s]+/
+
+ Fecha en formato YYYY-MM-DD
+/\b\d{4}-\d{2}-\d{2}\b/
+
+ Código postal de 5 dígitos
+/\b\d{5}\b/
+
+ Número de teléfono de 10 dígitos
+/\b\d{10}\b/
+
+ Contiene al menos una mayúscula
+/[A-Z]/
+
+ Contiene al menos una minúscula
+/[a-z]/
+
+ Contiene al menos un número
+/[0-9]/
+
+ Contiene caracteres especiales (no alfanuméricos)
+/[^a-zA-Z0-9]/
+
+ Mínimo 8 caracteres
+/^.{8,}$/
+
+Contraseña con al menos una mayúscula, un número y 8+ caracteres
+/^(?=.*[A-Z])(?=.*\d).{8,}$/
+*/
 
 
 

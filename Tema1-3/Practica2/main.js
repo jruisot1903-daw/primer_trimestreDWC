@@ -314,7 +314,7 @@ document.getElementById("abrirVent").onclick = () => {
   let wAuxAlto = alto - 20;
 
   wAux = window.open(
-    "http://127.0.0.1:5500/primer_trimestreDWC/Tema1-3/Pruebas/usuarios.html",
+    "../Pruebas/usuarios.html",
     "_blank",
     `width=${wAuxAncho},height=${wAuxAlto}`
   );
@@ -366,7 +366,7 @@ function buscarYResaltar() {
 
   try {
     const regex = new RegExp(patron, "gi");
-    const coincidencias = [...texto.matchAll(regex)];
+    const coincidencias = [...texto.matchAll(regex)];// los ... hacen que el iterador que devuelve matchAll se convierta en un array 
 
     const resaltado = texto.replace(regex, match => `<span class="highlight">${match}</span>`);
 
@@ -397,10 +397,10 @@ function reemplazarTexto() {
 
   document.getElementById("validarFecha").onclick = () => {
     const texto = document.getElementById("texto").value;
-    const regex = /\b\d{2}\/\d{2}\/\d{4}\b/;
+    const regex = /\d{2}\/\d{2}\/\d{4}/;
     const resultado = document.getElementById("salida15");
 
-    const coincidencia = texto.match(regex);
+    let coincidencia = texto.match(regex);
 
     if (coincidencia) {
       resultado.textContent = "Fecha encontrada: " + coincidencia[0];
@@ -436,7 +436,6 @@ salida17.innerHTML = nombres[1]+", "+nombres[0];
 }
 
 //Ejercicio18
-
  document.getElementById("limpiar").onclick = () => {
     const html = document.getElementById("htmlInput").value;
     const resultado = document.getElementById("salida18");
