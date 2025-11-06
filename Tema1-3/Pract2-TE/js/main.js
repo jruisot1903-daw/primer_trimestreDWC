@@ -31,7 +31,7 @@ document.getElementById("bDatosusuarios").onclick = function () {
     const valido = regexEmail.test(email) ? "Sí" : "No";
 
     document.getElementById(`indice${i}`).innerText = i;
-    document.getElementById(`nombre${i}`).innerText = nombre;
+    document.getElementById(`nombre${i}`).innerText = nombre.toUpperCase();
     document.getElementById(`email${i}`).innerText = email;
     document.getElementById(`edad${i}`).innerText = edad + " años";
     document.getElementById(`valido${i}`).innerText = valido;
