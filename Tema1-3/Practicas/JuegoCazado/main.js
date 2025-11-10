@@ -25,27 +25,27 @@ btnMostrar.addEventListener("click", () => {
 
 // Iniciar juego
 btnJugar.addEventListener("click", () => {
-  if(juegoIniciado === false){
+  if (juegoIniciado === false) {
     juegoIniciado = true;
-      const palabra = inputPalabra.value.trim().toLowerCase();
-  if (!/^[a-zA-ZÑñ]+$/.test(palabra)) {
-    alert("La palabra solo puede contener letras.");
-    return;
-  }
+    const palabra = inputPalabra.value.trim().toLowerCase();
+      if (!/^[a-zA-ZÑñ]+$/.test(palabra)) {
+        alert("La palabra solo puede contener letras.");
+        return;
+      }
 
-  palabraSecreta = palabra;
-  palabraMostrada = Array(palabra.length).fill("_");
-  letrasFallidas = [];
-  intentosRestantes = 6;
-  tiempoRestante = palabra.length * 5;
+    palabraSecreta = palabra;
+    palabraMostrada = Array(palabra.length).fill("_");
+    letrasFallidas = [];
+    intentosRestantes = 6;
+    tiempoRestante = palabra.length * 5;
 
-  document.getElementById("info-juego").style.display = "block";
-  actualizarVista();
-  actualizarOpacidad();
-  iniciarTemporizador();
-  }else 
+    document.getElementById("info-juego").style.display = "block";
+    actualizarVista();
+    actualizarOpacidad();
+    iniciarTemporizador();
+  } else
     alert("El juego ya ha sido iniciado");
-  
+
 });
 
 // Adivinar letra
