@@ -93,7 +93,7 @@ function actualizarVista() {
 // Actualizar opacidad de la capa
 function actualizarOpacidad() {
   const fallos = 6 - intentosRestantes;
-  const nuevaOpacidad = Math.max(0, 1 - fallos * 0.17);
+  const nuevaOpacidad = Math.max(0, 1 - fallos * 0.16);
   capaImagen.style.opacity = nuevaOpacidad.toFixed(2);
 }
 
