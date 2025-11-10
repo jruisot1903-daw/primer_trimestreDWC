@@ -28,7 +28,7 @@ btnJugar.addEventListener("click", () => {
   if(juegoIniciado === false){
     juegoIniciado = true;
       const palabra = inputPalabra.value.trim().toLowerCase();
-  if (!/^[a-zA-Z]+$/.test(palabra)) {
+  if (!/^[a-zA-ZÑñ]+$/.test(palabra)) {
     alert("La palabra solo puede contener letras.");
     return;
   }
@@ -53,7 +53,7 @@ btnAdivinar.addEventListener("click", () => {
   const letra = inputLetra.value.trim().toLowerCase();
   inputLetra.value = "";
 
-  if (!/^[a-zA-Z]$/.test(letra)) {
+  if (!/^[a-zA-ZÑñ]$/.test(letra)) {
     alert("Introduce una sola letra válida.");
     return;
   }
