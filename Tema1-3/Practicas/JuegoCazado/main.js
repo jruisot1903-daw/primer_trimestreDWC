@@ -4,6 +4,7 @@ let letrasFallidas = [];
 let intentosRestantes = 6;
 let tiempoRestante = 0;
 let temporizador = null;
+let juegoIniciado = false;
 
 const inputPalabra = document.getElementById("palabra");
 const inputLetra = document.getElementById("letra");
@@ -24,7 +25,9 @@ btnMostrar.addEventListener("click", () => {
 
 // Iniciar juego
 btnJugar.addEventListener("click", () => {
-  const palabra = inputPalabra.value.trim().toLowerCase();
+  if(juegoIniciado === false){
+    juegoIniciado = true;
+      const palabra = inputPalabra.value.trim().toLowerCase();
   if (!/^[a-zA-Z]+$/.test(palabra)) {
     alert("La palabra solo puede contener letras.");
     return;
@@ -40,6 +43,9 @@ btnJugar.addEventListener("click", () => {
   actualizarVista();
   actualizarOpacidad();
   iniciarTemporizador();
+  }else 
+    alert("El juego ya ha sido iniciado");
+  
 });
 
 // Adivinar letra
@@ -74,10 +80,12 @@ btnAdivinar.addEventListener("click", () => {
   if (!palabraMostrada.includes("_")) {
     detenerTemporizador();
     alert("¡Has ganado!");
+    juegoIniciado = false;
     reiniciarJuego();
   } else if (intentosRestantes === 0) {
     detenerTemporizador();
     alert(`¡Has perdido! La palabra era: ${palabraSecreta}`);
+    juegoIniciado = false;
     reiniciarJuego();
   }
 });
@@ -106,6 +114,7 @@ function iniciarTemporizador() {
     if (tiempoRestante <= 0) {
       detenerTemporizador();
       alert(`¡Se acabó el tiempo! La palabra era: ${palabraSecreta}`);
+      juegoIniciado = false;
       reiniciarJuego();
     }
   }, 1000);
