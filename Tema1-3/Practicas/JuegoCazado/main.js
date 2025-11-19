@@ -6,114 +6,133 @@ let tiempoRestante = 0;
 let temporizador = null;
 let juegoIniciado = false;
 
-const inputPalabra = document.getElementById("palabra");
-const inputLetra = document.getElementById("letra");
-const btnMostrar = document.getElementById("bpass");
-const btnJugar = document.getElementById("bjugar");
-const btnAdivinar = document.getElementById("bAdivinar");
-const divImagen = document.getElementById("div-imagen");
-const capaImagen = document.getElementById("imagen-capa");
+let inputPalabra = document.getElementById("palabra");
+let inputLetra = document.getElementById("letra");
+let btnMostrar = document.getElementById("bpass");
+let btnJugar = document.getElementById("bjugar");
+let btnAdivinar = document.getElementById("bAdivinar");
+let divImagen = document.getElementById("div-imagen");
+let capaImagen = document.getElementById("imagen-capa");
 
-// Mostrar/Ocultar palabra
-btnMostrar.addEventListener("click", () => {
-  const isOculto = inputPalabra.type === "password";
-  inputPalabra.type = isOculto ? "text" : "password";
-  document.getElementById("candadoimg").src = isOculto
-    ? "./img/candadoCerrado.png"
-    : "./img/candadoAbierto.png";
-});
-
-// Iniciar juego
-btnJugar.addEventListener("click", () => {
-  if(juegoIniciado === false){
-    juegoIniciado = true;
-      const palabra = inputPalabra.value.trim().toLowerCase();
-  if (!/^[a-zA-ZÑñ]+$/.test(palabra)) {
-    alert("La palabra solo puede contener letras.");
-    return;
+// Botón para mostrar u ocultar la palabra
+btnMostrar.addEventListener("click", function() {
+  if (inputPalabra.type === "password") {
+    inputPalabra.type = "text"; 
+    document.getElementById("candadoimg").src = "./img/candadoCerrado.png";
+  } else {
+    inputPalabra.type = "password"; 
+    document.getElementById("candadoimg").src = "./img/candadoAbierto.png";
   }
-
-  palabraSecreta = palabra;
-  palabraMostrada = Array(palabra.length).fill("_");
-  letrasFallidas = [];
-  intentosRestantes = 6;
-  tiempoRestante = palabra.length * 5;
-
-  document.getElementById("info-juego").style.display = "block";
-  actualizarVista();
-  actualizarOpacidad();
-  iniciarTemporizador();
-  }else 
-    alert("El juego ya ha sido iniciado");
-  
 });
 
-// Adivinar letra
-btnAdivinar.addEventListener("click", () => {
-  const letra = inputLetra.value.trim().toLowerCase();
+// Botón para empezar el juego
+btnJugar.addEventListener("click", function() {
+  if (juegoIniciado == false) {
+    juegoIniciado = true;
+    let palabra = inputPalabra.value;
+    palabra = palabra.trim().toLowerCase();
+
+    // Comprobar que solo hay letras
+    let soloLetras = /^[a-zA-ZÑñ]+$/;
+    if (!soloLetras.test(palabra)) {
+      alert("La palabra solo puede contener letras.");
+      return;
+    }
+
+    palabraSecreta = palabra;
+    palabraMostrada = [];
+    for (let i = 0; i < palabra.length; i++) {
+      palabraMostrada.push("_");   // rellenamos con _ la palabra para mostrarla en el juego 
+    }
+
+    letrasFallidas = [];
+    intentosRestantes = 6;
+    tiempoRestante = palabra.length * 5;
+
+    document.getElementById("info-juego").style.display = "block";
+    actualizarVista();
+    actualizarOpacidad();
+    iniciarTemporizador();
+  } else {
+    alert("El juego ya ha sido iniciado");
+  }
+});
+
+// Botón para adivinar una letra
+btnAdivinar.addEventListener("click", function() {
+  let letra = inputLetra.value;
+  letra = letra.trim().toLowerCase();
   inputLetra.value = "";
 
-  if (!/^[a-zA-ZÑñ]$/.test(letra)) {
+  // Comprobar que es una sola letra
+  let soloUnaLetra = /^[a-zA-ZÑñ]$/;
+  if (!soloUnaLetra.test(letra)) {
     alert("Introduce una sola letra válida.");
     return;
   }
 
-  if (palabraMostrada.includes(letra) || letrasFallidas.includes(letra)) {
+  // Comprobar si ya se usó
+  if (palabraMostrada.indexOf(letra) != -1 || letrasFallidas.indexOf(letra) != -1) {
     alert("Ya has probado esa letra.");
     return;
   }
 
-  if (palabraSecreta.includes(letra)) {
-    for (let i = 0; i < palabraSecreta.length; i++) {
-      if (palabraSecreta[i] === letra) {
-        palabraMostrada[i] = letra;
-      }
+  // Buscar la letra en la palabra
+  let encontrada = false;
+  for (let i = 0; i < palabraSecreta.length; i++) {
+    if (palabraSecreta[i] == letra) {
+      palabraMostrada[i] = letra;
+      encontrada = true;
     }
-  } else {
+  }
+
+  if (!encontrada) {
     letrasFallidas.push(letra);
-    intentosRestantes--;
+    intentosRestantes = intentosRestantes - 1;
     actualizarOpacidad();
   }
 
   actualizarVista();
 
-  if (!palabraMostrada.includes("_")) {
+  // Comprobar si ganó o perdió
+  if (palabraMostrada.indexOf("_") == -1) {
     detenerTemporizador();
     alert("¡Has ganado!");
     juegoIniciado = false;
     reiniciarJuego();
-  } else if (intentosRestantes === 0) {
+  } else if (intentosRestantes == 0) {
     detenerTemporizador();
-    alert(`¡Has perdido! La palabra era: ${palabraSecreta}`);
+    alert("¡Has perdido! La palabra era: " + palabraSecreta);
     juegoIniciado = false;
     reiniciarJuego();
   }
 });
 
-// Actualizar texto
+// Función para actualizar el texto en pantalla
 function actualizarVista() {
-  document.getElementById("palabraMostrada").textContent = `Palabra: ${palabraMostrada.join(" ")}`;
-  document.getElementById("timer").textContent = `Tiempo restante: ${tiempoRestante}s`;
-  document.getElementById("intentos").textContent = `Intentos restantes: ${intentosRestantes} / 6`;
-  document.getElementById("fallos").textContent = `Letras fallidas: ${letrasFallidas.join(", ")}`;
+  document.getElementById("palabraMostrada").textContent = "Palabra: " + palabraMostrada.join(" ");
+  document.getElementById("timer").textContent = "Tiempo restante: " + tiempoRestante + "s";
+  document.getElementById("intentos").textContent = "Intentos restantes: " + intentosRestantes + " / 6";
+  document.getElementById("fallos").textContent = "Letras fallidas: " + letrasFallidas.join(", ");
 }
 
-// Actualizar opacidad de la capa
 function actualizarOpacidad() {
-  const fallos = 6 - intentosRestantes;
-  const nuevaOpacidad = Math.max(0, 1 - fallos * 0.16);
+  let fallos = 6 - intentosRestantes;
+  let nuevaOpacidad = 1 - (fallos * 0.16);
+  if (nuevaOpacidad < 0) {
+    nuevaOpacidad = 0;
+  }
   capaImagen.style.opacity = nuevaOpacidad.toFixed(2);
 }
 
-// Temporizador
 function iniciarTemporizador() {
   clearInterval(temporizador);
-  temporizador = setInterval(() => {
-    tiempoRestante--;
+  temporizador = setInterval(function() {
+    tiempoRestante = tiempoRestante - 1;
     actualizarVista();
     if (tiempoRestante <= 0) {
       detenerTemporizador();
-      alert(`¡Se acabó el tiempo! La palabra era: ${palabraSecreta}`);
+      alert("¡Se acabó el tiempo! La palabra era: " + palabraSecreta);
       juegoIniciado = false;
       reiniciarJuego();
     }
@@ -124,7 +143,6 @@ function detenerTemporizador() {
   clearInterval(temporizador);
 }
 
-// Reiniciar juego
 function reiniciarJuego() {
   palabraSecreta = "";
   palabraMostrada = [];
