@@ -1,10 +1,11 @@
 let palabraSecreta = "";
 let palabraMostrada = [];
 let letrasFallidas = [];
-let intentosRestantes = 6;
 let tiempoRestante = 0;
 let temporizador = null;
 let juegoIniciado = false;
+let juegos = [];
+let juegosTexto = [];
 
 let inputPalabra = document.getElementById("palabra");
 let inputLetra = document.getElementById("letra");
@@ -13,6 +14,9 @@ let btnJugar = document.getElementById("bjugar");
 let btnAdivinar = document.getElementById("bAdivinar");
 let divImagen = document.getElementById("div-imagen");
 let capaImagen = document.getElementById("imagen-capa");
+let juegosrealizados = document.getElementById("juegos-realizados");
+
+let intentosRestantes = (inputPalabra.length/2)+1;
 
 // Botón para mostrar u ocultar la palabra
 btnMostrar.addEventListener("click", function() {
@@ -46,8 +50,8 @@ btnJugar.addEventListener("click", function() {
     }
 
     letrasFallidas = [];
-    intentosRestantes = 6;
-    tiempoRestante = palabra.length * 5;
+    intentosRestantes = (palabra.length/2)+1;
+    tiempoRestante = (palabra.length * 10)/3;
 
     document.getElementById("info-juego").style.display = "block";
     actualizarVista();
@@ -99,25 +103,33 @@ btnAdivinar.addEventListener("click", function() {
     detenerTemporizador();
     alert("¡Has ganado!");
     juegoIniciado = false;
+    juegos.push(palabra.value);
+    juegos.push(true);
+    guardarpartidas(juegos);
     reiniciarJuego();
   } else if (intentosRestantes == 0) {
     detenerTemporizador();
     alert("¡Has perdido! La palabra era: " + palabraSecreta);
     juegoIniciado = false;
+    juegos.push(palabra.value);
+    juegos.push(false);
+    guardarpartidas(juegos);
     reiniciarJuego();
   }
+  
 });
 
 // Función para actualizar el texto en pantalla
 function actualizarVista() {
   document.getElementById("palabraMostrada").textContent = "Palabra: " + palabraMostrada.join(" ");
   document.getElementById("timer").textContent = "Tiempo restante: " + tiempoRestante + "s";
-  document.getElementById("intentos").textContent = "Intentos restantes: " + intentosRestantes + " / 6";
+  document.getElementById("intentos").textContent = "Intentos restantes: " + intentosRestantes + " /"+intentosRestantes;
   document.getElementById("fallos").textContent = "Letras fallidas: " + letrasFallidas.join(", ");
 }
 
+// la opacidad no me funciona al cambiarle el numero de intentos fallidos 
 function actualizarOpacidad() {
-  let fallos = 6 - intentosRestantes;
+  let fallos = ((inputPalabra.length/2)+1) - intentosRestantes;
   let nuevaOpacidad = 1 - (fallos * 0.16);
   if (nuevaOpacidad < 0) {
     nuevaOpacidad = 0;
@@ -134,6 +146,9 @@ function iniciarTemporizador() {
       detenerTemporizador();
       alert("¡Se acabó el tiempo! La palabra era: " + palabraSecreta);
       juegoIniciado = false;
+      juegos.push(inputPalabra.value);
+      juegos.push(false);
+      guardarpartidas(juegos);
       reiniciarJuego();
     }
   }, 1000);
@@ -147,7 +162,7 @@ function reiniciarJuego() {
   palabraSecreta = "";
   palabraMostrada = [];
   letrasFallidas = [];
-  intentosRestantes = 6;
+  intentosRestantes = 0;
   tiempoRestante = 0;
   detenerTemporizador();
 
@@ -159,3 +174,23 @@ function reiniciarJuego() {
   document.getElementById("info-juego").style.display = "none";
   capaImagen.style.opacity = "1";
 }
+
+/* lo de guaradar las partidas no me lo hace del todo bien , ya que 
+la primera vez si ,pero despues cada vez que adivino la palabra porque se repite 
+*/
+function guardarpartidas(juegos){
+  let acertado = "";
+  if(juegos[1]){
+    acertado = "acertado";
+  }else 
+    acertado = "no acertado";
+
+for (let index = 0; index < juegos.length; index++) {
+  
+    juegosTexto.push("Juego "+index+": Palabra: '"+juegos[index]+"', "+acertado+", "+tiempoRestante+" /s");
+    juegosrealizados.innerHTML += juegosTexto[index] +"<br>";
+  
+  
+}
+}
+
