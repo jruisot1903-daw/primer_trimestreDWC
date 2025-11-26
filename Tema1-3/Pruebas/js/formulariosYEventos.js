@@ -1,5 +1,6 @@
 let info = document.getElementById("info");
-const f1 = document.getElementById("f1");
+
+/*const f1 = document.getElementById("f1");
 
 document.getElementsByName("turnos")[0].checked = true;
 
@@ -44,6 +45,76 @@ let interval = setInterval(function () {
 }, 200);
 
 meter1.value = 90;
+
+*/
+
+document.body.onresize = function (){
+    info.innerHTML = window.innerWidth+" x "+ window.innerHeight;
+
+}
+
+document.getElementById("main1").ondblclick = changeColor;
+//document.getElementById("main1")addEvenListener("dblclick", changeColor);
+
+/*document.getElementById("b1").addEventListener("click", function(){
+    document.getElementById("main1").removeEventListener("dblclick",changeColor);
+});*/
+
+
+document.getElementById("main1").onmouseover = changeColor;
+document.getElementById("main1").onmouseout = changeColor;
+
+document.getElementById("aside1").ondblclick = changeColor;
+document.getElementById("aside1").onmouseover = changeColor;
+document.getElementById("aside1").onmouseout = changeColor;
+
+
+let pMain = document.getElementById("pMain");
+let pAside = document.getElementById("pAside");
+
+function changeColor(ev) {
+    if (this.id == "main1") 
+        switch(ev.type) {
+            case "dblclick":
+                this.style.backgroundColor="#F2BDB3";
+                pMain.innerText = "Doble click";
+            break;
+            case "mouseover":
+                this.style.backgroundColor="#914E41";
+                pMain.innerText = "Ratón dentro";
+            break;
+            case "mouseout":
+                this.style.backgroundColor="#C92202";
+                pMain.innerText = "Sale ratón";
+            break;
+        }
+    else // aside
+        switch(ev.type) {
+            case "dblclick":
+                this.style.backgroundColor="#B9DCEB";
+                pAside.innerText = "Doble click";
+            break;
+            case "mouseover":
+                this.style.backgroundColor="#3E7A94";
+                pAside.innerText = "Ratón dentro";
+            break;
+            case "mouseout":
+                this.style.backgroundColor="#044561";
+                pAside.innerText = "Sale ratón";
+            break;
+        }
+}
+
+// Prevenir la carga inicial del evento
+
+document.getElementById("ejemplo").addEventListener("click", function(event){
+    event.preventDefault();
+});
+
+
+document.getElementById("bSend").addEventListener("click", function(ev){
+    ev.preventDefault();
+});
 
 
 
