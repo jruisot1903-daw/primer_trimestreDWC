@@ -48,76 +48,46 @@ meter1.value = 90;
 
 */
 
-document.body.onresize = function (){
-    info.innerHTML = window.innerWidth+" x "+ window.innerHeight;
 
+
+// document.body.addEventListener("keydown", press);
+// document.getElementById("ta1").addEventListener("keypress", press);
+ // document.getElementById("ta1").addEventListener("keyup", press);
+
+// function press(ev) {
+//     info.innerHTML = "<b>Evento:</b> "+ev.type+". <b>Código de tecla:</b> " + ev.code + ". <b>Tecla pulsada:</b> " + ev.key;
+//     if (ev.altKey) info.innerHTML = "Has pulsado Alt";
+//     if (ev.ctrlKey) info.innerHTML = "Has pulsado Control";
+//     if (ev.shiftKey) info.innerHTML = "Has pulsado Mayúsculas";
+// }
+
+document.body.addEventListener("keydown", press);
+// document.body.addEventListener("keypress", press);
+// document.body.addEventListener("keyup", press);
+const ball = document.getElementById("ball");
+
+function press(ev) {
+    console.log(ev.key);
+
+    let top = parseFloat(ball.style.top.substring(0, ball.style.top.length-2));
+    let left = parseFloat(ball.style.left.substring(0, ball.style.left.length-2));
+
+    switch(ev.key) {
+        case "ArrowUp":
+            if (top > 0)
+                ball.style.top = (top - 5) + "px";
+        break;
+        case "ArrowDown":
+            if (top < window.innerHeight)
+                ball.style.top = (top + 5) + "px";
+        break;
+        case "ArrowLeft":
+            if (left > 0)
+                ball.style.left = (left - 5) + "px";
+        break;
+        case "ArrowRight":
+            if (left < window.innerWidth)
+                ball.style.left = (left + 5) + "px";
+        break;
+    }
 }
-
-document.getElementById("main1").ondblclick = changeColor;
-//document.getElementById("main1")addEvenListener("dblclick", changeColor);
-
-/*document.getElementById("b1").addEventListener("click", function(){
-    document.getElementById("main1").removeEventListener("dblclick",changeColor);
-});*/
-
-
-document.getElementById("main1").onmouseover = changeColor;
-document.getElementById("main1").onmouseout = changeColor;
-
-document.getElementById("aside1").ondblclick = changeColor;
-document.getElementById("aside1").onmouseover = changeColor;
-document.getElementById("aside1").onmouseout = changeColor;
-
-
-let pMain = document.getElementById("pMain");
-let pAside = document.getElementById("pAside");
-
-function changeColor(ev) {
-    if (this.id == "main1") 
-        switch(ev.type) {
-            case "dblclick":
-                this.style.backgroundColor="#F2BDB3";
-                pMain.innerText = "Doble click";
-            break;
-            case "mouseover":
-                this.style.backgroundColor="#914E41";
-                pMain.innerText = "Ratón dentro";
-            break;
-            case "mouseout":
-                this.style.backgroundColor="#C92202";
-                pMain.innerText = "Sale ratón";
-            break;
-        }
-    else // aside
-        switch(ev.type) {
-            case "dblclick":
-                this.style.backgroundColor="#B9DCEB";
-                pAside.innerText = "Doble click";
-            break;
-            case "mouseover":
-                this.style.backgroundColor="#3E7A94";
-                pAside.innerText = "Ratón dentro";
-            break;
-            case "mouseout":
-                this.style.backgroundColor="#044561";
-                pAside.innerText = "Sale ratón";
-            break;
-        }
-}
-
-// Prevenir la carga inicial del evento
-
-document.getElementById("ejemplo").addEventListener("click", function(event){
-    event.preventDefault();
-});
-
-
-document.getElementById("bSend").addEventListener("click", function(ev){
-    ev.preventDefault();
-});
-
-
-
-
-
-
