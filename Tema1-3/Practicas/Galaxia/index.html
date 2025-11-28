@@ -1,20 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galaxia</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="./img/Galaxia.png" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Creador de galaxias</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="main.js" defer></script>
 </head>
 <body>
-    <h1 id="text">Galaxia</h1>
-<svg class="menu-icono" viewBox="0 0 100 100">
-  <path class="linea linea1" d="M 20,30 L 80,30" />
-  <path class="linea linea2" d="M 20,50 L 80,50" />
-  <path class="linea linea3" d="M 20,70 L 80,70" />
-  <rect class="rectangulo" x="10" y="10" width="80" height="80" rx="5" ry="5"></rect>
-</svg>
-    
+  <h1 id="titulo">Galaxia</h1>
+
+  <!-- Ícono SVG para abrir el panel -->
+  <svg class="menu-icono" viewBox="0 0 100 100" id="togglePanel">
+    <path class="linea" d="M 20,30 L 80,30" />
+    <path class="linea" d="M 20,50 L 80,50" />
+    <path class="linea" d="M 20,70 L 80,70" />
+    <rect class="rectangulo" x="10" y="10" width="80" height="80" rx="5" ry="5"></rect>
+  </svg>
+
+  <!-- Panel lateral con el formulario y la lista -->
+  <aside id="panel">
+    <h2>Crear Planeta / Luna</h2>
+    <form id="formulario">
+      <label>Tipo:</label>
+      <select name="tipo">
+        <option value="planeta">Planeta</option>
+        <option value="luna">Luna</option>
+      </select>
+
+      <label>Nombre:</label>
+      <input type="text" name="nombre" />
+
+      <label>Coordenada X:</label>
+      <input type="number" name="x" />
+
+      <label>Coordenada Y:</label>
+      <input type="number" name="y" />
+
+      <label>Diámetro:</label>
+      <input type="number" name="diametro" />
+
+      <label>Color:</label>
+      <input type="color" name="color" />
+
+      <button type="submit">Crear</button>
+    </form>
+
+    <h3>Lista de Planetas / Lunas</h3>
+    <ul id="lista-PlaneLun">
+
+    </ul>
+  </aside>
+
+  <div id="universo"></div>
 </body>
 </html>

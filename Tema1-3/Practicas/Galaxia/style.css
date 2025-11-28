@@ -1,22 +1,21 @@
-*{
-    margin: 0%;
-    padding: 0%;
-    border: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-body{
-    background-color: black;
+body {
+  background-color: black;
+  overflow-x: hidden;
 }
 
-#text{
-   margin-top: 10px;
-   color: white;
-   text-shadow: 0 0 15px gray;
-   text-align: center;
+#titulo {
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+  text-shadow: 0 0 15px gray;
 }
-
 
 .menu-icono {
   width: 50px;
@@ -24,13 +23,16 @@ body{
   cursor: pointer;
   background-color: white;
   border-radius: 10px;
-  margin-left: 20px;
-  margin-top: 10px;
+  margin: 10px 20px;
   box-shadow: 0 0 10px gray;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
 }
 
-.menu-icono:hover{
-    transform: scale(110%);
+.menu-icono:hover {
+  transform: scale(1.1);
 }
 
 .linea {
@@ -44,3 +46,86 @@ body{
   transition: stroke 0.4s ease;
 }
 
+/* Ocultar el icono cuando se abre el panel */
+.menu-icono.oculto {
+  display: none;
+}
+
+/* Panel lateral */
+#panel {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100%;
+  background-color: #1a1a1a;
+  color: white;
+  padding: 20px;
+  transition: left 0.3s ease;
+  z-index: 999;
+  box-shadow: 2px 0 10px rgba(255, 255, 255, 0.2);
+}
+
+#panel.abierto {
+  left: 0;
+}
+
+#panel h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+#panel label {
+  display: block;
+  margin-top: 10px;
+}
+
+#panel input,
+#panel select,
+#panel button {
+  width: 100%;
+  margin-top: 5px;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+}
+
+#panel button {
+  background-color: #4caf50;
+  color: white;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+#panel button:hover {
+  background-color: #45a049;
+}
+
+/* Lista de planetas y lunas*/
+#panel h3 {
+  margin-top: 25px;
+  font-size: 18px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 5px;
+}
+
+#lista-PlaneLun {
+  list-style: none;
+  margin-top: 10px;
+  padding-left: 0;
+  max-height: 200px; 
+  overflow-y: auto;  
+}
+
+#lista-PlaneLun li {
+  padding: 6px;
+  border-bottom: 1px solid #333;
+  font-size: 14px;
+}
+
+/* Universo */
+#universo {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
