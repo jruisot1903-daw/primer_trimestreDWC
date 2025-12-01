@@ -29,6 +29,7 @@ body {
   top: 10px;
   left: 10px;
   z-index: 1000;
+  display: block;
 }
 
 .menu-icono:hover {
@@ -46,11 +47,6 @@ body {
   transition: stroke 0.4s ease;
 }
 
-/* Ocultar el icono cuando se abre el panel */
-.menu-icono.oculto {
-  display: none;
-}
-
 /* Panel lateral */
 #panel {
   position: fixed;
@@ -66,9 +62,6 @@ body {
   box-shadow: 2px 0 10px rgba(255, 255, 255, 0.2);
 }
 
-#panel.abierto {
-  left: 0;
-}
 
 #panel h2 {
   margin-bottom: 20px;
