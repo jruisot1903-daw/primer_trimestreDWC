@@ -78,10 +78,15 @@ body {
 #panel button {
   width: 100%;
   margin-top: 5px;
-  padding: 8px;
+  padding: 10px;
   border-radius: 5px;
   border: none;
 }
+
+input[type="color"] {
+  height: 35px;
+}
+
 
 #panel button {
   background-color: #4caf50;

@@ -16,184 +16,126 @@ panel.addEventListener('mouseout', (e) => {
   }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let universo = document.getElementById('universo');
-// let lista = document.getElementById('lista-PlaneLun');
-// let formulario = document.getElementById('formulario');
-// let elementos = [];
-
-// formulario.addEventListener('submit', (e) => {
-//   e.preventDefault();
-
-//   let tipo = formulario.tipo.value;
-//   let nombre = formulario.nombre.value;
-//   let x = parseInt(formulario.x.value);
-//   let y = parseInt(formulario.y.value);
-//   let diametro = parseInt(formulario.diametro.value);
-//   let color = formulario.color.value;
-//   let profundidad = Math.floor(Math.random() * 101);
-
-//   let div = document.createElement('div');
-//   div.className = tipo;
-//   div.style.position = 'absolute';
-//   div.style.left = `${x}px`;
-//   div.style.top = `${y}px`;
-//   div.style.width = `${diametro}px`;
-//   div.style.height = `${diametro}px`;
-//   div.style.backgroundColor = color;
-//   div.style.borderRadius = '50%';
-//   div.style.zIndex = profundidad;
-//   div.title = nombre;
-
-//   if (tipo === 'luna') {
-//     div.style.border = '5px solid white';
-//   }
-
-//   let objeto = {
-//     tipo,
-//     nombre,
-//     x,
-//     y,
-//     diametro,
-//     color,
-//     profundidad,
-//     nodo: div
-//   };
-
-//   div.addEventListener('click', () => intercambiar(objeto));
-//   elementos.push(objeto);
-//   universo.appendChild(div);
-//   actualizarLista();
-// });
-
-// function actualizarLista() {
-//   lista.innerHTML = '';
-//   elementos.forEach((el) => {
-//     let li = document.createElement('li');
-//     li.textContent = `${el.tipo.toUpperCase()} - ${el.nombre}`;
-//     li.style.cursor = 'pointer';
-//     li.addEventListener('click', () => intercambiar(el));
-//     lista.appendChild(li);
-//   });
-// }
-
-// function intercambiar(objeto) {
-//   let primero = elementos[0];
-//   if (objeto === primero) return;
-
-//   // Intercambiar coordenadas y profundidad
-//   [objeto.x, primero.x] = [primero.x, objeto.x];
-//   [objeto.y, primero.y] = [primero.y, objeto.y];
-//   [objeto.profundidad, primero.profundidad] = [primero.profundidad, objeto.profundidad];
-
-//   // Actualizar estilos
-//   objeto.nodo.style.left = `${objeto.x}px`;
-//   objeto.nodo.style.top = `${objeto.y}px`;
-//   objeto.nodo.style.zIndex = objeto.profundidad;
-
-//   primero.nodo.style.left = `${primero.x}px`;
-//   primero.nodo.style.top = `${primero.y}px`;
-//   primero.nodo.style.zIndex = primero.profundidad;
-
-//   // Reordenar array
-//   let index = elementos.indexOf(objeto);
-//   elementos.splice(index, 1);
-//   elementos.unshift(objeto);
-
-//   actualizarLista();
-// }
-
-
-
+let universo = document.getElementById('universo');
+let lista = document.getElementById('lista-PlaneLun');
+let formulario = document.getElementById('formulario');
+let elementos = [];
+
+formulario.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // Obtener valores del formulario
+  let tipo = formulario.tipo.value;
+  let nombre = formulario.nombre.value;
+  let x = parseInt(formulario.x.value);
+  let y = parseInt(formulario.y.value);
+  let diametro = parseInt(formulario.diametro.value);
+  let color = formulario.color.value;
+  let profundidad = Math.floor(Math.random() * 101);
+
+  // Crear el div del planeta o luna
+  let nuevoElemento = document.createElement('div');
+  nuevoElemento.className = tipo;
+  nuevoElemento.style.position = 'absolute';
+  nuevoElemento.style.left = x + 'px';
+  nuevoElemento.style.top = y + 'px';
+  nuevoElemento.style.width = diametro + 'px';
+  nuevoElemento.style.height = diametro + 'px';
+  nuevoElemento.style.backgroundColor = color;
+  nuevoElemento.style.borderRadius = '50%';
+  nuevoElemento.style.zIndex = profundidad;
+
+  if (tipo === 'luna') {
+    nuevoElemento.style.border = '5px solid white';
+  }
+
+  // Crear etiqueta <p> con el nombre
+  let etiqueta = document.createElement('p');
+  etiqueta.textContent = nombre;
+  etiqueta.style.color = 'white';
+  etiqueta.style.fontSize = '12px';
+  etiqueta.style.textAlign = 'center';
+  etiqueta.style.margin = '0';
+  etiqueta.style.position = 'absolute';
+  etiqueta.style.top = '100%';      // debajo del círculo
+  etiqueta.style.left = '50%';
+  etiqueta.style.transform = 'translateX(-50%)';
+
+  // Añadir la etiqueta al div
+  nuevoElemento.appendChild(etiqueta);
+
+  // Guardar los datos en un objeto
+  let objeto = {
+    tipo: tipo,
+    nombre: nombre,
+    x: x,
+    y: y,
+    diametro: diametro,
+    color: color,
+    profundidad: profundidad,
+    nodo: nuevoElemento
+  };
+
+  // Añadir evento de clic
+  nuevoElemento.addEventListener('click', function() {
+    intercambiar(objeto);
+  });
+
+  // Guardar y mostrar
+  elementos.push(objeto);
+  universo.appendChild(nuevoElemento);
+  actualizarLista();
+});
+
+function actualizarLista() {
+  lista.innerHTML = '';
+
+  for (let i = 0; i < elementos.length; i++) {
+    let item = document.createElement('li');
+    item.textContent = elementos[i].tipo.toUpperCase() + ' - ' + elementos[i].nombre;
+    item.style.cursor = 'pointer';
+
+    item.addEventListener('click', function() {
+      intercambiar(elementos[i]);
+    });
+
+    lista.appendChild(item);
+  }
+}
+
+function intercambiar(objeto) {
+  let primero = elementos[0];
+
+  if (objeto === primero) {
+    return;
+  }
+
+  // Intercambiar coordenadas y profundidad
+  let tempX = objeto.x;
+  let tempY = objeto.y;
+  let tempProf = objeto.profundidad;
+
+  objeto.x = primero.x;
+  objeto.y = primero.y;
+  objeto.profundidad = primero.profundidad;
+
+  primero.x = tempX;
+  primero.y = tempY;
+  primero.profundidad = tempProf;
+
+  // Actualizar estilos
+  objeto.nodo.style.left = objeto.x + 'px';
+  objeto.nodo.style.top = objeto.y + 'px';
+  objeto.nodo.style.zIndex = objeto.profundidad;
+
+  primero.nodo.style.left = primero.x + 'px';
+  primero.nodo.style.top = primero.y + 'px';
+  primero.nodo.style.zIndex = primero.profundidad;
+
+  // Reordenar array
+  let index = elementos.indexOf(objeto);
+  elementos.splice(index, 1);
+  elementos.unshift(objeto);
+
+  actualizarLista();
+}
