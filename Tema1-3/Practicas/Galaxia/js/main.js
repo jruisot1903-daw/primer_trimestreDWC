@@ -57,7 +57,7 @@ formulario.addEventListener('submit', function(e) {
   etiqueta.style.textAlign = 'center';
   etiqueta.style.margin = '0';
   etiqueta.style.position = 'absolute';
-  etiqueta.style.top = '100%';      // debajo del círculo
+  etiqueta.style.top = '50%';
   etiqueta.style.left = '50%';
   etiqueta.style.transform = 'translateX(-50%)';
 

@@ -4,11 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Creador de galaxias</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="main.js" defer></script>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/fondo.css">
+  <script src="./js/main.js" defer></script>
+  <link rel="shortcut icon" href="./img/Galaxia.png" type="image/x-icon">
 </head>
 <body>
+ 
+    <div class="bg"></div>
+
+    <div class="star-field">
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
   <h1 id="titulo">Galaxia</h1>
+
+ <!-- Esto de arriba Y el css llamado fondo.css lo he cogido de internet para ponerle el fondo de una galaxia 
+    link de la pagina donde lo he cogido https://codepen.io/stack-findover/pen/eYWPwPV 
+  -->
 
   <!-- Ícono SVG para abrir el panel -->
   <svg class="menu-icono" viewBox="0 0 100 100" id="botonPanel">
@@ -44,6 +57,7 @@
       <input type="color" name="color" />
 
       <button type="submit">Crear</button>
+      <button type="reset">Resetear</button>
     </form>
 
     <h3>Lista de Planetas / Lunas</h3>
