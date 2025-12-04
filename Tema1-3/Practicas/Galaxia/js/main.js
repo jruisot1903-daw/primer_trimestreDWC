@@ -10,7 +10,9 @@ boton.addEventListener('click', () => {
 // Cerrar panel al salir el ratón 
 
 panel.addEventListener('mouseout', (e) => {
-  if (!panel.contains(e.relatedTarget)) { // en relatedTarget se almacena si el raton se mueve fuera de en este caso el panel , si es asi se esconde el panel 
+  if (!panel.contains(e.relatedTarget)) { 
+// en relatedTarget se almacena si el raton se mueve fuera de en este caso 
+// el panel , si es asi se esconde el panel 
     panel.style.left = "-300px";
     boton.style.display = "block";
   }
