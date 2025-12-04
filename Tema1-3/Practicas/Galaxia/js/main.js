@@ -78,6 +78,7 @@ formulario.addEventListener('submit', function(e) {
     nodo: nuevoElemento
   };
 
+
   // Añadir evento de clic
   nuevoElemento.addEventListener('click', function() {
     intercambiar(objeto);
@@ -87,7 +88,17 @@ formulario.addEventListener('submit', function(e) {
   elementos.push(objeto);
   universo.appendChild(nuevoElemento);
   actualizarLista();
+
+  limpiaForm();
 });
+
+function limpiaForm(){
+  formulario.nombre.value = "";
+  formulario.x.value = "";
+  formulario.y.value = "";
+  formulario.diametro.value = "";
+  formulario.color.value = "";
+}
 
 function actualizarLista() {
   lista.innerHTML = '';
