@@ -74,7 +74,7 @@ window.addEventListener("load", () => {
       form.appendChild(camposExtra);
     });
 
-    // Validación sencilla
+    // Validación de campos
     function validarCampo(e) {
       const campo = e.target;
       let regex = null;
