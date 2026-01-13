@@ -1,4 +1,4 @@
- let info = document.getElementById("info");
+let info = document.getElementById("info");
 
  //creaccion y sintaxis de la promesa
 // console.log("Iniciando ...");
@@ -170,3 +170,11 @@ if(typeof Worker){
 //Prueba web worked.js Desde el principal le pasamos los datos al worker
 // seria lo mismo pero el postMessage lo escribimos aqui y en el worker this.onmessage y lo tenemos 
 /*******************************************/
+
+/*******************************************/
+//Modulos
+/*******************************************/
+import { seyHello, actualYear } from "./modulos/lib.js";
+
+console.log(seyHello());
+console.log(actualYear);
