@@ -25,6 +25,7 @@ body{
     justify-content: center;
     color: var(--texto-principal);
     background-color: var(--color-fondo);
+    padding: 10px;
 }
 
 #cabecera {

@@ -129,6 +129,7 @@ function crearTarjetaIndividual(producto) {
     contenido.style.display = "flex";
     contenido.style.flexDirection = "column";
     contenido.style.overflow = "hidden";
+    contenido.style.width = "100%";
 
     const titulo = createNode("h2", producto.title);
     titulo.className = "product-title";
@@ -156,7 +157,7 @@ function crearTarjetaIndividual(producto) {
     detallesContainer.style.paddingTop = "10px";
     detallesContainer.style.borderTop = "1px solid var(--color-secundario)";
     detallesContainer.style.flexShrink = "0";
-
+    detallesContainer.style.width = "100%";
     const detalles = [
         { label: "Precio:", value: `${producto.price || "0"} €`, destacado: true },
         { label: "Descuento:", value: producto.discountPercentage + "%" },
@@ -171,7 +172,7 @@ function crearTarjetaIndividual(producto) {
         filaDetalle.style.display = "flex";
         filaDetalle.style.justifyContent = "space-between";
         filaDetalle.style.marginBottom = "6px";
-
+        filaDetalle.style.width = "100%";
         const label = createNode("span", detalle.label);
         label.style.color = "var(--texto-principal)";
         label.style.fontSize = "12px";
