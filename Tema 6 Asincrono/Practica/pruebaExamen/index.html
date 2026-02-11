@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Práctica Examen DAW</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+<body>
+
+<div id="app"></div>
+
+<hr>
+
+<h2>Formulario</h2>
+<form id="formulario">
+    Nombre: <input type="text" id="nombre"><span id="contador"></span><br><br>
+    Edad: <input type="text" id="edad"><br><br>
+    Provincia:
+    <select id="provincia">
+        <option value="Madrid">Madrid</option>
+        <option value="Sevilla">Sevilla</option>
+        <option value="Valencia">Valencia</option>
+        <option value="Bilbao">Bilbao</option>
+    </select>
+    <br><br>
+    <input type="checkbox" id="condiciones"> Acepto las condiciones<br><br>
+    <button id="enviar">Enviar</button>
+</form>
+
+<hr>
+
+<button id="btnXML">Cargar usuarios (XML)</button>
+<div id="resultadoXML"></div>
+
+<hr>
+
+<button id="btnJSON">Cargar productos (JSON)</button>
+<div id="resultadoJSON"></div>
+
+<hr>
+
+<h2>Enviar datos con Fetch (POST)</h2>
+<form id="formPost">
+    Nombre: <input type="text" id="postNombre"><br><br>
+    Email: <input type="text" id="postEmail"><br><br>
+    <button id="btnPost">Enviar datos</button>
+</form>
+<div id="respuestaPost"></div>
+
+</body>
+</html>
