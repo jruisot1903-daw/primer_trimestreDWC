@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batalla RPG</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/main.js" type="module"></script>
+</head>
+<body>
+
+    <h1>Batalla RPG</h1>
+
+    <section id="formulario">
+        <h2>Crear Personaje</h2>
+
+        <form id="crearPersonajeForm">
+            <label>Nombre:</label>
+            <input type="text" id="nombre" required>
+
+            <label>Fuerza (1-10):</label>
+            <input type="number" id="fuerza" min="1" max="10" required>
+
+            <label>Clase:</label>
+            <select id="clase">
+                <option value="Guerrero">Guerrero</option>
+                <option value="Mago">Mago</option>
+            </select>
+
+            <button type="submit">Crear</button>
+        </form>
+    </section>
+
+    <section id="personajes">
+        <h2>Personajes</h2>
+        <div id="listaPersonajes"></div>
+    </section>
+
+    <section id="log">
+        <h2>Registro de Batalla</h2>
+        <div id="logContenido"></div>
+    </section>
+
+</body>
+</html>

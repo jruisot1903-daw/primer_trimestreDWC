@@ -1,0 +1,160 @@
+body {
+    font-family: "Inter", Arial, sans-serif;
+    background: #121212;
+    color: #e5e5e5;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+h2 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #dcdcdc;
+}
+
+section {
+    background: #1c1c1c;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 14px;
+    width: 85%;
+    max-width: 900px;
+    border: 1px solid #2a2a2a;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+input, select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background-color: #1e1e1e !important;
+    color: #f2f2f2 !important;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+
+input:focus, select:focus {
+    border-color: #4a90e2;
+    outline: none;
+}
+
+button {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: #4a90e2;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #3a78c2;
+}
+
+#listaPersonajes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+
+.tarjeta {
+    background: #1a1a1a;
+    padding: 18px;
+    width: 230px;
+    border-radius: 12px;
+    border: 1px solid #2a2a2a;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+}
+
+.tarjeta h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.tarjeta p {
+    margin: 6px 0 12px;
+    color: #b5b5b5;
+}
+
+
+progress {
+    width: 100%;
+    height: 14px;
+    appearance: none;
+}
+
+progress::-webkit-progress-bar {
+    background: #333;
+    border-radius: 8px;
+}
+
+progress::-webkit-progress-value {
+    background: #4caf50;
+    border-radius: 8px;
+}
+
+.atacarBtn {
+    margin-top: 12px;
+    width: 100%;
+    padding: 10px;
+    background: #e74c3c;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.atacarBtn:hover {
+    background: #c0392b;
+}
+
+.atacarBtn:disabled {
+    background: #555;
+    cursor: not-allowed;
+}
+
+#logContenido {
+    background: #1a1a1a;
+    padding: 15px;
+    height: 220px;
+    overflow-y: auto;
+    border-radius: 10px;
+    border: 1px solid #2a2a2a;
+    font-family: "Inter", monospace;
+    font-size: 0.9rem;
+    color: #dcdcdc;
+}
+
+#logContenido p {
+    margin: 6px 0;
+    padding: 6px 0;
+    border-bottom: 1px solid #2a2a2a;
+}
